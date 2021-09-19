@@ -1,10 +1,10 @@
 {
   "root": true,
   "project": {
-    "name": "studio"
+    "name": "sanity-portfolio"
   },
   "api": {
-    "projectId": "plqn920n",
+    "projectId": "y6l6wadq",
     "dataset": "production"
   },
   "plugins": [
