@@ -20,7 +20,7 @@ export default function Home() {
 
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
         <h1 className="text-6xl font-bold font-header">
-          Hi I'm{' '}
+          Hi I&apos;m{' '}
           <button
             onClick={() => clickEmoji()}
             className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-400"
