@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .nav-link {
+    @apply text-xl font-medium uppercase text-slate-500 px-4 transition;
+  }
+
+  .social-icon {
+    @apply p-4 bg-orange-50 shadow-lg shadow-orange-300 rounded-full flex justify-center items-center transition;
+  }
+
+  .card {
+    @apply rounded-xl shadow-xl p-6;
+  }
+
+  .img-card {
+    @apply rounded-xl shadow-xl;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}

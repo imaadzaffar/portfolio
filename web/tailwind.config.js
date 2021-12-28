@@ -1,20 +1,17 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
   ],
-  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
       fontFamily: {
-        header: 'Work Sans',
-        body: 'Inter',
+        header: ['Work Sans', ...defaultTheme.fontFamily.sans],
+        body: ['Inter', ...defaultTheme.fontFamily.sans],
       },
     },
   },
-  variants: {
-    extend: {
-      animation: ['hover'],
-    },
-  },
+  plugins: [],
 }
