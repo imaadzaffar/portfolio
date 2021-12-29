@@ -33,13 +33,13 @@ export default function About() {
   return (
     <div
       id="about"
-      className="bg-gradient-to-b from-teal-100 to-teal-300 min-h-screen"
+      className="bg-gradient-to-b from-teal-100 to-teal-300 dark:from-slate-800 dark:to-slate-900 min-h-screen"
     >
       <div className="container mx-auto p-10">
         <div className="flex items-center gap-4 text-teal-500">
           <a
             href="#"
-            className="hidden md:block hover:text-teal-700 transition"
+            className="hidden md:block hover:text-teal-700 dark:hover:text-teal-300 transition"
           >
             <FaDna size={40} />
           </a>
@@ -67,11 +67,13 @@ function Card(props) {
   let { title, description, technologies } = props.skill
 
   return (
-    <div className="card bg-teal-50 shadow-teal-300">
-      <h3 className="text-2xl text-slate-700  font-header font-bold">
+    <div className="card bg-teal-50 dark:bg-slate-700 shadow-teal-300 dark:shadow-none">
+      <h3 className="text-2xl text-slate-700 dark:text-slate-100 font-header font-bold">
         {title}
       </h3>
-      <p className="text-base text-slate-500">{description}</p>
+      <p className="text-base text-slate-500 dark:text-slate-300">
+        {description}
+      </p>
       <div className="mt-6">
         {technologies.map((tech) => (
           <div

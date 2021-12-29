@@ -57,13 +57,13 @@ export default function Socials() {
   return (
     <div
       id="socials"
-      className="bg-gradient-to-b from-orange-100 to-orange-300 min-h-screen"
+      className="bg-gradient-to-b from-orange-100 to-orange-300 dark:from-slate-800 dark:to-slate-900 min-h-screen"
     >
       <div className="container mx-auto p-10">
         <div className="flex items-center gap-4 text-orange-500">
           <a
             href="#"
-            className="hidden md:block hover:text-orange-700 transition"
+            className="hidden md:block hover:text-orange-700 dark:hover:text-orange-300 transition"
           >
             <FaUserFriends size={40} />
           </a>
@@ -82,7 +82,7 @@ export default function Socials() {
             href="https://youtube.com/"
             target="_blank"
             rel="noreferrer"
-            className="social-icon text-[#ff0000] hover:text-[#a80000]"
+            className="social-icon dark:bg-slate-700 dark:shadow-none text-[#ff0000] hover:text-[#a80000] dark:hover:text-[#ff7474]"
           >
             <FaYoutube size={40} />
           </a>
@@ -90,7 +90,7 @@ export default function Socials() {
             href="https://twitter.com/imaadzaffar"
             target="_blank"
             rel="noreferrer"
-            className="social-icon text-[#1da1f2] hover:text-[#13699e]"
+            className="social-icon dark:bg-slate-700 dark:shadow-none text-[#1da1f2] hover:text-[#13699e] dark:hover:text-[#5cb4eb]"
           >
             <FaTwitter size={40} />
           </a>
@@ -98,7 +98,7 @@ export default function Socials() {
             href="https://github.com/imaadzaffar"
             target="_blank"
             rel="noreferrer"
-            className="social-icon text-[#6e5494] hover:text-[#532c8f]"
+            className="social-icon dark:bg-slate-700 dark:shadow-none text-[#6e5494] hover:text-[#532c8f] dark:hover:text-[#9371c7]"
           >
             <FaGithub size={40} />
           </a>
@@ -106,7 +106,7 @@ export default function Socials() {
             href="https://linkedin.com/in/imaadzaffar"
             target="_blank"
             rel="noreferrer"
-            className="social-icon text-[#0077b5] hover:text-[#00466b]"
+            className="social-icon dark:bg-slate-700 dark:shadow-none text-[#0077b5] hover:text-[#00466b] dark:hover:text-[#3c89b3]"
           >
             <FaLinkedin size={40} />
           </a>
@@ -114,7 +114,7 @@ export default function Socials() {
             href="mailto:iszaffar@gmail.com"
             target="_blank"
             rel="noreferrer"
-            className="social-icon text-green-600 hover:text-green-800"
+            className="social-icon dark:bg-slate-700 dark:shadow-none text-green-600 hover:text-green-800 dark:hover:text-green-400"
           >
             <FaEnvelope size={40} />
           </a>
@@ -128,19 +128,21 @@ function VideoCard(props) {
   let { img, title, description, link } = props.video
 
   return (
-    <div className="img-card bg-orange-50 shadow-orange-300 overflow-hidden">
+    <div className="img-card bg-orange-50 dark:bg-slate-700 shadow-orange-300 dark:shadow-none overflow-hidden">
       <div className="w-full aspect-video bg-slate-500"></div>
       {/* <img src={img} alt="" className="w-full aspect-[1.9/1]"></img> */}
       <div className="p-6">
-        <h3 className="text-2xl text-slate-700 font-header font-bold">
+        <h3 className="text-2xl text-slate-700 dark:text-slate-100 font-header font-bold">
           {title}
         </h3>
-        <p className="text-base text-slate-500">{description}</p>
+        <p className="text-base text-slate-500 dark:text-slate-300">
+          {description}
+        </p>
         <a
           href={link}
           target="_blank"
           rel="noreferrer"
-          className="inline-block uppercase font-medium text-orange-500 hover:text-orange-700 mt-4 transition"
+          className="inline-block uppercase font-medium text-orange-500 hover:text-orange-700 dark:hover:text-orange-300 mt-4 transition"
         >
           Watch Now
         </a>

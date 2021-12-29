@@ -34,11 +34,14 @@ export default function Projects() {
   return (
     <div
       id="projects"
-      className="bg-gradient-to-b from-sky-100 to-sky-300 min-h-screen"
+      className="bg-gradient-to-b from-sky-100 to-sky-300 dark:from-slate-800 dark:to-slate-900 min-h-screen"
     >
       <div className="container mx-auto p-10">
         <div className="flex items-center gap-4 text-sky-500">
-          <a href="#" className="hidden md:block hover:text-sky-700 transition">
+          <a
+            href="#"
+            className="hidden md:block hover:text-sky-700 dark:hover:text-sky-300 transition"
+          >
             <FaLaptopCode size={40} />
           </a>
           <h1 className="text-5xl font-bold font-header">Projects</h1>
@@ -60,8 +63,10 @@ function ProjectCard(props) {
   let { title, description, technologies, linkLive, linkCode } = props.project
 
   return (
-    <div className="card bg-sky-50 shadow-sky-300">
-      <h3 className="text-2xl text-slate-700 font-header font-bold">{title}</h3>
+    <div className="card bg-sky-50 dark:bg-slate-700 shadow-sky-300 dark:shadow-none">
+      <h3 className="text-2xl text-slate-700 dark:text-slate-100 font-header font-bold">
+        {title}
+      </h3>
       <div className="mt-2">
         {technologies.map((tech) => (
           <div
@@ -72,14 +77,16 @@ function ProjectCard(props) {
           </div>
         ))}
       </div>
-      <p className="text-base text-slate-500 mt-4">{description}</p>
+      <p className="text-base text-slate-500 dark:text-slate-300 mt-4">
+        {description}
+      </p>
       <div className="mt-4">
         {linkLive && (
           <a
             href={linkLive}
             target="_blank"
             rel="noreferrer"
-            className="inline-block uppercase font-medium text-emerald-500 hover:text-emerald-700 mr-4 transition"
+            className="inline-block uppercase font-medium text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-300 mr-4 transition"
           >
             Live Project
           </a>
@@ -89,7 +96,7 @@ function ProjectCard(props) {
             href={linkCode}
             target="_blank"
             rel="noreferrer"
-            className="inline-block uppercase font-medium text-purple-500 hover:text-purple-700 transition"
+            className="inline-block uppercase font-medium text-purple-500 hover:text-purple-700 dark:hover:text-purple-300 transition"
           >
             Source Code
           </a>

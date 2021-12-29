@@ -27,13 +27,13 @@ export default function Blog() {
   return (
     <div
       id="blog"
-      className="bg-gradient-to-b from-violet-100 to-violet-300 min-h-screen"
+      className="bg-gradient-to-b from-violet-100 to-violet-300 dark:from-slate-800 dark:to-slate-900 min-h-screen"
     >
       <div className="container mx-auto p-10">
         <div className="flex items-center gap-4 text-violet-500">
           <a
             href="#"
-            className="hidden md:block hover:text-violet-700 transition"
+            className="hidden md:block hover:text-violet-700 dark:hover:text-violet-300 transition"
           >
             <FaPen size={40} />
           </a>
@@ -56,19 +56,21 @@ function PostCard(props) {
   let { img, title, excerpt, link } = props.post
 
   return (
-    <div className="img-card bg-violet-50 shadow-violet-300 overflow-hidden">
+    <div className="img-card bg-violet-50 dark:bg-slate-700 shadow-violet-300 dark:shadow-none overflow-hidden">
       <div className="w-full aspect-[1.9/1] bg-slate-500"></div>
       {/* <img src={img} alt="" className="w-full aspect-[1.9/1]"></img> */}
       <div className="p-6">
-        <h3 className="text-2xl text-slate-700 font-header font-bold">
+        <h3 className="text-2xl text-slate-700 dark:text-slate-100 font-header font-bold">
           {title}
         </h3>
-        <p className="text-base text-slate-500">{excerpt}</p>
+        <p className="text-base text-slate-500 dark:text-slate-300">
+          {excerpt}
+        </p>
         <a
           href={link}
           target="_blank"
           rel="noreferrer"
-          className="inline-block uppercase font-medium text-violet-500 hover:text-violet-700 mt-4 transition"
+          className="inline-block uppercase font-medium text-violet-500 hover:text-violet-700 dark:hover:text-violet-300 mt-4 transition"
         >
           Read More
         </a>
