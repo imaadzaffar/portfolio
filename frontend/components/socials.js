@@ -60,7 +60,7 @@ export default function Socials() {
       className="bg-gradient-to-b from-orange-100 to-orange-300 dark:from-slate-800 dark:to-slate-900 min-h-screen"
     >
       <div className="container mx-auto p-10">
-        <div className="flex items-center gap-4 text-orange-500">
+        <div className="flex flex-col md:flex-row items-center gap-4 text-orange-500">
           <a
             href="#"
             className="hidden md:block hover:text-orange-700 dark:hover:text-orange-300 transition"
@@ -77,12 +77,12 @@ export default function Socials() {
             <VideoCard video={video} key={video} />
           ))}
         </div>
-        <div className="flex justify-center gap-8 mt-10">
+        <div className="flex justify-center gap-4 md:gap-8 mt-10">
           <a
             href="https://www.youtube.com/channel/UCRGp4IcgPuOIJ9aIYCh2VAA"
             target="_blank"
             rel="noreferrer"
-            className="social-icon dark:bg-slate-700 dark:shadow-none text-[#ff0000] hover:text-[#a80000] dark:hover:text-[#ff7474]"
+            className="md:social-icon dark:md:bg-slate-700 dark:md:shadow-none text-[#ff0000] hover:text-[#a80000] dark:md:hover:text-[#ff7474]"
           >
             <FaYoutube size={40} />
           </a>
@@ -90,7 +90,7 @@ export default function Socials() {
             href="https://twitter.com/imaadzaffar"
             target="_blank"
             rel="noreferrer"
-            className="social-icon dark:bg-slate-700 dark:shadow-none text-[#1da1f2] hover:text-[#13699e] dark:hover:text-[#5cb4eb]"
+            className="md:social-icon dark:md:bg-slate-700 dark:md:shadow-none text-[#1da1f2] hover:text-[#13699e] dark:md:hover:text-[#5cb4eb]"
           >
             <FaTwitter size={40} />
           </a>
@@ -98,7 +98,7 @@ export default function Socials() {
             href="https://github.com/imaadzaffar"
             target="_blank"
             rel="noreferrer"
-            className="social-icon dark:bg-slate-700 dark:shadow-none text-[#6e5494] hover:text-[#532c8f] dark:hover:text-[#9371c7]"
+            className="md:social-icon dark:md:bg-slate-700 dark:md:shadow-none text-[#6e5494] hover:text-[#532c8f] dark:md:hover:text-[#9371c7]"
           >
             <FaGithub size={40} />
           </a>
@@ -106,7 +106,7 @@ export default function Socials() {
             href="https://linkedin.com/in/imaad-zaffar"
             target="_blank"
             rel="noreferrer"
-            className="social-icon dark:bg-slate-700 dark:shadow-none text-[#0077b5] hover:text-[#00466b] dark:hover:text-[#3c89b3]"
+            className="md:social-icon dark:md:bg-slate-700 dark:md:shadow-none text-[#0077b5] hover:text-[#00466b] dark:md:hover:text-[#3c89b3]"
           >
             <FaLinkedin size={40} />
           </a>
@@ -114,7 +114,7 @@ export default function Socials() {
             href="mailto:iszaffar@gmail.com"
             target="_blank"
             rel="noreferrer"
-            className="social-icon dark:bg-slate-700 dark:shadow-none text-green-600 hover:text-green-800 dark:hover:text-green-400"
+            className="md:social-icon dark:md:bg-slate-700 dark:md:shadow-none text-green-600 hover:text-green-800 dark:md:hover:text-green-400"
           >
             <FaEnvelope size={40} />
           </a>
