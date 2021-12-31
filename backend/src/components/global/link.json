@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_global_links",
+  "info": {
+    "displayName": "Tag",
+    "icon": "tag",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "tag": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

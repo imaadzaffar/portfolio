@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_socials_social_icons",
+  "info": {
+    "displayName": "Social Icon",
+    "icon": "globe",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "link": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

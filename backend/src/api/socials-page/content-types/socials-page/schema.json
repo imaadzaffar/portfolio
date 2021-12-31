@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "socials_pages",
+  "info": {
+    "singularName": "socials-page",
+    "pluralName": "socials-pages",
+    "displayName": "Socials Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "Socials",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "socials": {
+      "type": "component",
+      "repeatable": true,
+      "component": "socials.social-icon"
+    }
+  }
+}
