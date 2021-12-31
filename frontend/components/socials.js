@@ -79,7 +79,7 @@ export default function Socials() {
         </div>
         <div className="flex justify-center gap-8 mt-10">
           <a
-            href="https://youtube.com/"
+            href="https://www.youtube.com/channel/UCRGp4IcgPuOIJ9aIYCh2VAA"
             target="_blank"
             rel="noreferrer"
             className="social-icon dark:bg-slate-700 dark:shadow-none text-[#ff0000] hover:text-[#a80000] dark:hover:text-[#ff7474]"
@@ -103,7 +103,7 @@ export default function Socials() {
             <FaGithub size={40} />
           </a>
           <a
-            href="https://linkedin.com/in/imaadzaffar"
+            href="https://linkedin.com/in/imaad-zaffar"
             target="_blank"
             rel="noreferrer"
             className="social-icon dark:bg-slate-700 dark:shadow-none text-[#0077b5] hover:text-[#00466b] dark:hover:text-[#3c89b3]"
