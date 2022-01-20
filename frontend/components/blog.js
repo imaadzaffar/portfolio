@@ -7,19 +7,19 @@ export default function Blog() {
     {
       img: '',
       title: 'Blog Post 1',
-      excerpt: 'This is a cool excerpt.',
+      excerpt: 'This is a cool blog post.',
       link: '#',
     },
     {
       img: '',
       title: 'Blog Post 2',
-      excerpt: 'This is a cool excerpt.',
+      excerpt: 'This is a cool blog post.',
       link: '#',
     },
     {
       img: '',
       title: 'Blog Post 3',
-      excerpt: 'This is a cool excerpt.',
+      excerpt: 'This is a cool blog post.',
       link: '#',
     },
   ]
@@ -40,7 +40,7 @@ export default function Blog() {
           <h1 className="text-5xl font-bold font-header">Blog</h1>
         </div>
         <p className="text-2xl text-violet-500 mt-4">
-          I write about my life sometimes...
+          I sometimes write about random stuff
         </p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
           {posts.map((post) => (

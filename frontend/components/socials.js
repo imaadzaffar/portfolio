@@ -37,19 +37,19 @@ export default function Socials() {
     {
       img: '',
       title: 'Video 1',
-      description: 'Subscribe to my channel loser.',
+      description: 'Subscribe to my channel.',
       link: '',
     },
     {
       img: '',
       title: 'Video 2',
-      description: 'Subscribe to my channel loser.',
+      description: 'Subscribe to my channel.',
       link: '',
     },
     {
       img: '',
       title: 'Video 3',
-      description: 'Subscribe to my channel loser.',
+      description: 'Subscribe to my channel.',
       link: '',
     },
   ]
@@ -70,7 +70,7 @@ export default function Socials() {
           <h1 className="text-5xl font-bold font-header">Socials</h1>
         </div>
         <p className="text-2xl text-orange-500 mt-4">
-          Connect with me bean. I make videos sometimes :)
+          I sometimes make videos on uni, cool projects and startups
         </p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
           {videos.map((video) => (

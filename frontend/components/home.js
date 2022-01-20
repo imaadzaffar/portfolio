@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <div className="bg-slate-50 dark:bg-slate-900 flex flex-col items-center justify-center text-center min-h-screen py-6">
       <div className="text-6xl font-medium font-header">
-        <span className="text-slate-700 dark:text-slate-100">{"Hi, I'm "}</span>
+        <span className="text-slate-700 dark:text-slate-100">Hi, I’m </span>
         <button
           onClick={() => clickEmoji()}
           className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500 hover:from-green-500 hover:to-blue-500 transition-all"

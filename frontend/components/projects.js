@@ -5,25 +5,28 @@ import { FaLaptopCode } from 'react-icons/fa'
 export default function Projects() {
   let projects = [
     {
-      title: 'Family Fitness',
+      name: 'Family Fitness',
       description:
         'Leaderboard for family members to compete based on exercise.',
+      type: 'web',
       technologies: ['HTML', 'CSS', 'JS', 'Django'],
       linkLive: 'https://zafaris-family-fitness.herokuapp.com/',
       linkCode: 'hi',
     },
     {
-      title: 'Cubyl Battles',
+      name: 'Cubyl Battles',
       description:
         'Battle to solve the Rubik’s cube the fastest, with a scramble generator and timer.',
+      type: 'web',
       technologies: ['HTML', 'CSS', 'JS'],
       linkLive: 'http://cubyl-battles.herokuapp.com/',
       linkCode: '',
     },
     {
-      title: 'Weekly',
+      name: 'Weekly',
       description:
         'Small app to show which school week it is - A, B or holiday.',
+      type: 'app',
       technologies: ['Kotlin', 'Android Studio'],
       linkLive:
         'https://play.google.com/store/apps/details?id=com.zafaris.whichweek',
@@ -47,7 +50,7 @@ export default function Projects() {
           <h1 className="text-5xl font-bold font-header">Projects</h1>
         </div>
         <p className="text-2xl text-sky-500 mt-4">
-          Here are some of my projects :)
+          Here are some of my personal projects
         </p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
           {projects.map((project) => (
@@ -60,12 +63,13 @@ export default function Projects() {
 }
 
 function ProjectCard(props) {
-  let { title, description, technologies, linkLive, linkCode } = props.project
+  let { name, description, type, technologies, linkLive, linkCode } =
+    props.project
 
   return (
     <div className="card bg-sky-50 dark:bg-slate-700 shadow-sky-300 dark:shadow-none">
       <h3 className="text-2xl text-slate-700 dark:text-slate-100 font-header font-bold">
-        {title}
+        {`${name} - ${type}`}
       </h3>
       <div className="mt-2">
         {technologies.map((tech) => (

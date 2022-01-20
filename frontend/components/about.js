@@ -6,7 +6,7 @@ export default function About() {
   let skills = [
     {
       title: 'Web Dev',
-      description: 'Building full stack web apps on the internet',
+      description: 'Building full stack web apps on the internet.',
       technologies: [
         'HTML',
         'CSS',
@@ -20,12 +20,12 @@ export default function About() {
     },
     {
       title: 'App Dev',
-      description: 'Building mobile apps for Android and iOS',
+      description: 'Building mobile apps for Android and iOS.',
       technologies: ['Java', 'Kotlin', 'React Native', 'Flutter'],
     },
     {
       title: 'Design',
-      description: 'Creating beautiful UIs, assets and designs',
+      description: 'Creating beautiful UIs, assets and designs.',
       technologies: ['Figma', 'XD', 'Photoshop', 'Illustrator'],
     },
   ]
@@ -46,12 +46,12 @@ export default function About() {
           <h1 className="text-5xl font-bold font-header">About Me</h1>
         </div>
         <p className="text-teal-500 mt-4">
-          I’m a 1st year Computer Science student at university. I like making
-          cool and interesting projects and diving straight into the deep end. I
-          started coding around 5 years ago with Python in school. I loved it!
-          Since then, I’ve made many apps and websites, which I find pretty
-          amazing. Fun fact: I can solve the Rubik’s cube in less than 30
-          seconds!
+          {`Hi, I’m Imaad. I’m a 1st year Computer Science student at university.
+          I enjoy making cool, interesting projects and diving straight into
+          the deep end. I started coding around 5 years ago with Python in
+          school and... I loved it! Since then, I’ve made many apps and websites,
+          which I find pretty amazing. Fun fact: I can solve the Rubik’s cube in
+          less than 30 seconds!`}
         </p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
           {skills.map((skill) => (
