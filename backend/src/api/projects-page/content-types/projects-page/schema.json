@@ -19,6 +19,12 @@
     },
     "description": {
       "type": "text"
+    },
+    "projects": {
+      "type": "component",
+      "repeatable": true,
+      "component": "projects.project",
+      "required": true
     }
   }
 }
