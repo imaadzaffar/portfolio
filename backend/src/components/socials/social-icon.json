@@ -11,13 +11,19 @@
       "type": "string",
       "required": true
     },
-    "icon": {
-      "type": "string",
-      "required": true
-    },
     "name": {
       "type": "string",
       "required": true
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
     }
   }
 }

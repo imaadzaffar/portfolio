@@ -7,7 +7,17 @@ import Projects from '../components/projects'
 import Socials from '../components/socials'
 import Blog from '../components/blog'
 
-export default function Index() {
+import {
+  getAboutPage,
+  getBlogPage,
+  getBlogPosts,
+  getHomePage,
+  getProjectsPage,
+  getSocialsPage,
+  getVideos,
+} from '../lib/api'
+
+function Index({ home, about, projects, socials, videos, blog, posts }) {
   return (
     <>
       <Head>
@@ -17,12 +27,32 @@ export default function Index() {
         <link rel="preconnect" href="https://fonts.gstatic.com" />
       </Head>
       <main>
-        <Home />
-        <About />
-        <Projects />
-        <Socials />
-        <Blog />
+        <Home home={home} />
+        <About about={about} />
+        <Projects projects={projects} />
+        <Socials socials={socials} videos={videos} />
+        <Blog blog={blog} posts={posts} />
       </main>
     </>
   )
 }
+
+export async function getStaticProps() {
+  const [home, about, projects, socials, videos, blog, posts] =
+    await Promise.all([
+      getHomePage(),
+      getAboutPage(),
+      getProjectsPage(),
+      getSocialsPage(),
+      getVideos(),
+      getBlogPage(),
+      // getBlogPosts(),
+    ])
+
+  return {
+    props: { home, about, projects, socials, videos, blog },
+    revalidate: 1,
+  }
+}
+
+export default Index

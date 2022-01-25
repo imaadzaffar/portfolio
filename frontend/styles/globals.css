@@ -8,7 +8,7 @@
   }
 
   .social-icon {
-    @apply p-4 bg-orange-50 shadow-lg shadow-orange-300 rounded-full flex justify-center items-center transition;
+    @apply shadow-lg shadow-orange-300;
   }
 
   .card {

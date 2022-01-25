@@ -2,7 +2,7 @@ import React from 'react'
 import { IconContext } from 'react-icons'
 import { FaPen } from 'react-icons/fa'
 
-export default function Blog() {
+export default function Blog({ blog }) {
   let posts = [
     {
       img: '',
@@ -37,14 +37,16 @@ export default function Blog() {
           >
             <FaPen size={40} />
           </a>
-          <h1 className="text-5xl font-bold font-header">Blog</h1>
+          <h1 className="text-5xl font-bold font-header">
+            {blog.data.attributes.heading}
+          </h1>
         </div>
         <p className="text-2xl text-violet-500 mt-4">
-          I sometimes write about random stuff
+          {blog.data.attributes.description}
         </p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
-          {posts.map((post) => (
-            <PostCard post={post} key={post} />
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+          {posts.map((post, index) => (
+            <PostCard post={post} key={index} />
           ))}
         </div>
       </div>
