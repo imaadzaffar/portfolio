@@ -46,11 +46,11 @@ export async function getStaticProps() {
       getSocialsPage(),
       getVideos(),
       getBlogPage(),
-      // getBlogPosts(),
+      getBlogPosts(),
     ])
 
   return {
-    props: { home, about, projects, socials, videos, blog },
+    props: { home, about, projects, socials, videos, blog, posts },
     revalidate: 1,
   }
 }

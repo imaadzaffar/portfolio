@@ -2,7 +2,7 @@ const GET_USER_ARTICLES = `
     query GetUserArticles($page: Int!) {
         user(username: "imaadzaffar") {
             publication {
-                posts(page: 0) {
+                posts(page: $page) {
                     title
                     brief
                     coverImage
@@ -29,6 +29,10 @@ async function fetchHashnodeAPI(query, variables = {}) {
   return data.json()
 }
 
+export function getBlogURL(slug) {
+  return `https://blog.imaadzaffar.com/${slug}`
+}
+
 export async function getHashnodePosts(page) {
   const articles = fetchHashnodeAPI(GET_USER_ARTICLES, {
     page: page,
@@ -36,4 +40,5 @@ export async function getHashnodePosts(page) {
     console.log(result)
     return result.data.user.publication.posts
   })
+  return articles
 }

@@ -1,29 +1,9 @@
 import React from 'react'
 import { IconContext } from 'react-icons'
 import { FaPen } from 'react-icons/fa'
+import { getBlogURL } from '../lib/api-hashnode'
 
-export default function Blog({ blog }) {
-  let posts = [
-    {
-      img: '',
-      title: 'Blog Post 1',
-      excerpt: 'This is a cool blog post.',
-      link: '#',
-    },
-    {
-      img: '',
-      title: 'Blog Post 2',
-      excerpt: 'This is a cool blog post.',
-      link: '#',
-    },
-    {
-      img: '',
-      title: 'Blog Post 3',
-      excerpt: 'This is a cool blog post.',
-      link: '#',
-    },
-  ]
-
+export default function Blog({ blog, posts }) {
   return (
     <div
       id="blog"
@@ -55,19 +35,18 @@ export default function Blog({ blog }) {
 }
 
 function PostCard(props) {
-  let { img, title, excerpt, link } = props.post
+  const { coverImage, title, brief, slug, dateAdded } = props.post
+  const link = getBlogURL(slug)
 
   return (
     <div className="img-card bg-violet-50 dark:bg-slate-700 shadow-violet-300 dark:shadow-none overflow-hidden">
-      <div className="w-full aspect-[1.9/1] bg-slate-500"></div>
-      {/* <img src={img} alt="" className="w-full aspect-[1.9/1]"></img> */}
+      {/* <div className="w-full aspect-[1.9/1] bg-slate-500"></div> */}
+      <img src={coverImage} alt="" className="w-full aspect-[1.9/1]"></img>
       <div className="p-6">
         <h3 className="text-2xl text-slate-700 dark:text-slate-100 font-header font-bold">
           {title}
         </h3>
-        <p className="text-base text-slate-500 dark:text-slate-300">
-          {excerpt}
-        </p>
+        <p className="text-base text-slate-500 dark:text-slate-300">{brief}</p>
         <a
           href={link}
           target="_blank"
