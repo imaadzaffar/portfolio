@@ -1,3 +1,4 @@
+import moment from 'moment'
 import React from 'react'
 import { IconContext } from 'react-icons'
 import { FaPen } from 'react-icons/fa'
@@ -24,7 +25,7 @@ export default function Blog({ blog, posts }) {
         <p className="text-2xl text-violet-500 mt-4">
           {blog.data.attributes.description}
         </p>
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+        <div className="grid md:grid-cols-2 gap-8 mt-10">
           {posts.map((post, index) => (
             <PostCard post={post} key={index} />
           ))}
@@ -38,15 +39,22 @@ function PostCard(props) {
   const { coverImage, title, brief, slug, dateAdded } = props.post
   const link = getBlogURL(slug)
 
+  const dateString = moment(dateAdded).fromNow()
+
   return (
     <div className="img-card bg-violet-50 dark:bg-slate-700 shadow-violet-300 dark:shadow-none overflow-hidden">
       {/* <div className="w-full aspect-[1.9/1] bg-slate-500"></div> */}
       <img src={coverImage} alt="" className="w-full aspect-[1.9/1]"></img>
       <div className="p-6">
-        <h3 className="text-2xl text-slate-700 dark:text-slate-100 font-header font-bold">
+        <h3 className="text-xl text-slate-700 dark:text-slate-100 font-header font-bold">
           {title}
         </h3>
-        <p className="text-base text-slate-500 dark:text-slate-300">{brief}</p>
+        <p className="text-base text-slate-300 dark:text-slate-400 mt-2">
+          {dateString}
+        </p>
+        <p className="text-base text-slate-500 dark:text-slate-300 mt-4">
+          {brief}
+        </p>
         <a
           href={link}
           target="_blank"

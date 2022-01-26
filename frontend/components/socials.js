@@ -9,6 +9,8 @@ import {
 } from 'react-icons/fa'
 import { getStrapiMedia } from '../lib/media'
 
+import moment from 'moment'
+
 export default function Socials({ socials, videos }) {
   return (
     <div
@@ -55,17 +57,19 @@ function SocialIcon(props) {
       href={link}
       target="_blank"
       rel="noreferrer"
-      className="md:social-icon dark:md:bg-slate-700 dark:md:shadow-none"
+      className="shadow-lg shadow-orange-300 dark:shadow-none"
     >
-      <img width={50} height={50} src={iconSrc} alt={name}></img>
+      <img width={50} height={50} src={iconSrc}></img>
     </a>
   )
 }
 
 function VideoCard(props) {
-  const { thumbnails, title, description } = props.video.snippet
+  const { thumbnails, title, description, publishedAt } = props.video.snippet
   const videoId = props.video.id.videoId
   const thumbnailSrc = thumbnails.high.url
+
+  const dateString = moment(publishedAt).fromNow()
 
   return (
     <a
@@ -80,12 +84,12 @@ function VideoCard(props) {
           className=" w-1/3 md:w-auto md:h-auto aspect-video object-cover"
         ></img>
         <div className="p-6">
-          <h3 className="text-2xl text-slate-700 dark:text-slate-100 font-header font-bold">
+          <h3 className="text-xl text-slate-700 dark:text-slate-100 font-header font-bold">
             {title}
           </h3>
-          {/* <p className="text-base text-slate-500 dark:text-slate-300">
-            {description}
-          </p> */}
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
+            {dateString}
+          </p>
         </div>
       </div>
     </a>

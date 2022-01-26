@@ -37,7 +37,6 @@ export async function getHashnodePosts(page) {
   const articles = fetchHashnodeAPI(GET_USER_ARTICLES, {
     page: page,
   }).then((result) => {
-    console.log(result)
     return result.data.user.publication.posts
   })
   return articles
