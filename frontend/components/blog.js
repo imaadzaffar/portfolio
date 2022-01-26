@@ -36,10 +36,15 @@ export default function Blog({ blog, posts }) {
 }
 
 function PostCard(props) {
-  const { coverImage, title, brief, slug, dateAdded } = props.post
+  const { coverImage, title, brief, slug, dateAdded, contentMarkdown } =
+    props.post
   const link = getBlogURL(slug)
 
   const dateString = moment(dateAdded).fromNow()
+
+  const wpm = 225
+  const words = contentMarkdown.trim().replace('\n', '').split(/\s+/).length
+  const estimatedTime = Math.ceil(words / wpm)
 
   return (
     <div className="img-card bg-violet-50 dark:bg-slate-700 shadow-violet-300 dark:shadow-none overflow-hidden">
@@ -50,7 +55,7 @@ function PostCard(props) {
           {title}
         </h3>
         <p className="text-base text-slate-300 dark:text-slate-400 mt-2">
-          {dateString}
+          {estimatedTime} mins read / posted {dateString}
         </p>
         <p className="text-base text-slate-500 dark:text-slate-300 mt-4">
           {brief}

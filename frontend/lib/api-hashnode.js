@@ -6,8 +6,9 @@ const GET_USER_ARTICLES = `
                     title
                     brief
                     coverImage
-                    dateAdded
                     slug
+                    dateAdded
+                    contentMarkdown
                 }
             }
         }

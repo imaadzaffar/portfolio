@@ -87,8 +87,8 @@ function VideoCard(props) {
           <h3 className="text-xl text-slate-700 dark:text-slate-100 font-header font-bold">
             {title}
           </h3>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
-            {dateString}
+          <p className="text-base text-slate-500 dark:text-slate-400 mt-2">
+            uploaded {dateString}
           </p>
         </div>
       </div>
