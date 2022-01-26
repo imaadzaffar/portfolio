@@ -51,7 +51,6 @@ export async function getStaticProps() {
 
   return {
     props: { home, about, projects, socials, videos, blog, posts },
-    revalidate: 1,
   }
 }
 
