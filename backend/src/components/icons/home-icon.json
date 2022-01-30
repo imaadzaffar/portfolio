@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_icons_home_icons",
+  "info": {
+    "displayName": "HomeIcon",
+    "icon": "smile-wink"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    }
+  }
+}

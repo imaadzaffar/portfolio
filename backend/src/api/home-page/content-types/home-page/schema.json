@@ -21,13 +21,6 @@
       "type": "text",
       "required": true
     },
-    "icons": {
-      "displayName": "Emoji",
-      "type": "component",
-      "repeatable": true,
-      "component": "icons.emoji",
-      "required": true
-    },
     "navLinks": {
       "type": "component",
       "repeatable": true,

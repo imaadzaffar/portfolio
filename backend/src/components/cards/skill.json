@@ -18,7 +18,8 @@
     "tags": {
       "type": "component",
       "repeatable": true,
-      "component": "tags.link"
+      "component": "tags.tag",
+      "required": true
     }
   }
 }

@@ -1,9 +1,8 @@
 {
-  "collectionName": "components_global_links",
+  "collectionName": "components_tags_tags",
   "info": {
     "displayName": "Tag",
-    "icon": "tag",
-    "description": ""
+    "icon": "tags"
   },
   "options": {},
   "attributes": {

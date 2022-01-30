@@ -22,14 +22,14 @@
     "linkCode": {
       "type": "string"
     },
+    "type": {
+      "type": "string"
+    },
     "technologies": {
       "type": "component",
       "repeatable": true,
-      "component": "tags.link",
-      "required": false
-    },
-    "type": {
-      "type": "string"
+      "component": "tags.tag",
+      "required": true
     }
   }
 }
