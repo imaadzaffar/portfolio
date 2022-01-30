@@ -23,8 +23,8 @@
     "projects": {
       "type": "component",
       "repeatable": true,
-      "component": "projects.project",
-      "required": true
+      "component": "cards.project",
+      "required": false
     }
   }
 }

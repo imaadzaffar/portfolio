@@ -1,7 +1,7 @@
 {
   "collectionName": "components_about_skills",
   "info": {
-    "displayName": "Skill",
+    "displayName": "SkillCard",
     "icon": "fire",
     "description": ""
   },
@@ -18,7 +18,7 @@
     "tags": {
       "type": "component",
       "repeatable": true,
-      "component": "global.link"
+      "component": "tags.link"
     }
   }
 }

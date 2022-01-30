@@ -19,12 +19,13 @@
     },
     "description": {
       "type": "text",
-      "required": true
+      "required": false
     },
     "socials": {
       "type": "component",
       "repeatable": true,
-      "component": "socials.social-icon"
+      "component": "icons.social-icon",
+      "required": true
     }
   }
 }

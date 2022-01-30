@@ -24,8 +24,8 @@
     "skills": {
       "type": "component",
       "repeatable": true,
-      "component": "about.skill",
-      "required": true
+      "component": "cards.skill",
+      "required": false
     }
   }
 }

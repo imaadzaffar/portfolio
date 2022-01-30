@@ -16,6 +16,23 @@
       "type": "string",
       "required": true,
       "default": "Hi, I'm"
+    },
+    "shortDescription": {
+      "type": "text",
+      "required": true
+    },
+    "icons": {
+      "displayName": "Emoji",
+      "type": "component",
+      "repeatable": true,
+      "component": "icons.emoji",
+      "required": true
+    },
+    "navLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "links.link",
+      "required": true
     }
   }
 }
