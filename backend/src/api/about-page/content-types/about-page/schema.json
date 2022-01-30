@@ -18,14 +18,14 @@
       "default": "About"
     },
     "description": {
-      "type": "text",
+      "type": "richtext",
       "required": true
     },
-    "skills": {
+    "technologies": {
       "type": "component",
       "repeatable": true,
-      "component": "cards.skill",
-      "required": false
+      "component": "text.text",
+      "required": true
     }
   }
 }

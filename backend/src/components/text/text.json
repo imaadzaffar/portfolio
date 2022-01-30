@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_text_texts",
+  "info": {
+    "displayName": "Text",
+    "icon": "text-height"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

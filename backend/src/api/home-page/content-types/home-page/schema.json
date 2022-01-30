@@ -28,9 +28,11 @@
       "required": true
     },
     "icons": {
-      "type": "component",
-      "repeatable": true,
-      "component": "icons.home-icon",
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true,
       "required": true
     }
   }
