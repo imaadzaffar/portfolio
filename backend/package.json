@@ -10,9 +10,9 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-i18n": "4.0.5",
-    "@strapi/plugin-users-permissions": "4.0.5",
-    "@strapi/strapi": "^4.0.6",
+    "@strapi/plugin-i18n": "4.0.6",
+    "@strapi/plugin-users-permissions": "4.0.6",
+    "@strapi/strapi": "4.0.6",
     "pg": "^8.7.1",
     "pg-connection-string": "^2.5.0",
     "sqlite3": "^4.2.0",
@@ -25,7 +25,7 @@
     "uuid": "49433611-1104-47a8-9a43-d4e329ee305a"
   },
   "engines": {
-    "node": ">=12.x.x <=16.x.x",
+    "node": "14.x.x",
     "npm": ">=6.0.0"
   },
   "license": "MIT"
