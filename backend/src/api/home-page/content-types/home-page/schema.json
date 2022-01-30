@@ -26,6 +26,12 @@
       "repeatable": true,
       "component": "links.link",
       "required": true
+    },
+    "icons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "icons.home-icon",
+      "required": true
     }
   }
 }
