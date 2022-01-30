@@ -1,37 +1,76 @@
+const qs = require('qs')
 import { fetchStrapiAPI } from './api-strapi'
 import { getYoutubeVideos } from './api-youtube'
 import { getHashnodePosts } from './api-hashnode'
 
 export async function getHomePage() {
-  return fetchStrapiAPI('/api/home-page')
+  const query = qs.stringify(
+    {
+      populate: '*',
+    },
+    {
+      encodeValuesOnly: true,
+    }
+  )
+
+  return fetchStrapiAPI(`/api/home-page?${query}`)
 }
 
 export async function getAboutPage() {
-  return fetchStrapiAPI(
-    '/api/about-page?populate[0]=skills&populate[1]=skills.tags'
+  const query = qs.stringify(
+    {
+      populate: '*',
+    },
+    {
+      encodeValuesOnly: true,
+    }
   )
+
+  return fetchStrapiAPI(`/api/about-page?${query}`)
 }
 
 export async function getProjectsPage() {
-  return fetchStrapiAPI(
-    '/api/projects-page?populate[0]=projects&populate[1]=projects.technologies'
+  const query = qs.stringify(
+    {
+      populate: {
+        projects: {
+          populate: ['technologies'],
+        },
+      },
+    },
+    {
+      encodeValuesOnly: true,
+    }
   )
+
+  return fetchStrapiAPI(`/api/projects-page?${query}`)
 }
 
 export async function getSocialsPage() {
-  return fetchStrapiAPI(
-    '/api/socials-page?populate[0]=socials&populate[1]=socials.icon'
+  const query = qs.stringify(
+    {
+      populate: {
+        socials: {
+          populate: ['icon'],
+        },
+      },
+    },
+    {
+      encodeValuesOnly: true,
+    }
   )
+
+  return fetchStrapiAPI(`/api/socials-page?${query}`)
 }
 
 export async function getBlogPage() {
   return fetchStrapiAPI('/api/blog-page')
 }
 
-export async function getVideos() {
+export async function getLatestVideos() {
   return getYoutubeVideos(3)
 }
 
-export async function getBlogPosts() {
+export async function getLatestPosts() {
   return getHashnodePosts(0)
 }

@@ -4,15 +4,19 @@
 
 @layer components {
   .nav-link {
-    @apply text-xl font-medium uppercase text-slate-500 dark:text-slate-400 px-4 transition;
+    @apply block md:inline-block text-left md:text-center text-xl font-medium lowercase text-slate-400 hover:text-slate-300 px-4 transition;
+  }
+
+  .tag {
+    @apply inline-block bg-slate-700 text-sm font-bold rounded-full mr-2 mb-2 px-4 py-1;
   }
 
   .card {
-    @apply rounded-xl shadow-xl p-6;
+    @apply rounded-xl hover:shadow-xl shadow-slate-300 dark:bg-slate-800 dark:shadow-none;
   }
 
-  .img-card {
-    @apply rounded-xl shadow-xl;
+  .card-text {
+    @apply card p-6;
   }
 }
 

@@ -4,7 +4,7 @@ function getYoutubeUrl(path = '') {
 
 async function getYoutubeAPI(path) {
   const requestUrl = getYoutubeUrl(path)
-  console.log(requestUrl)
+  // console.log(requestUrl)
 }
 
 export async function getYoutubeVideos(maxResults) {
@@ -13,7 +13,7 @@ export async function getYoutubeVideos(maxResults) {
   )
   const videos = await fetch(requestUrl)
     .then((res) => {
-      console.log(res)
+      // console.log(res)
       return res.json()
     })
     .then((data) => {

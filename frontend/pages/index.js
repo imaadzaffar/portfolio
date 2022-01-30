@@ -4,17 +4,18 @@ import Image from 'next/image'
 import Home from '../components/home'
 import About from '../components/about'
 import Projects from '../components/projects'
-import Socials from '../components/socials'
+import Videos from '../components/youtube'
 import Blog from '../components/blog'
+import Socials from '../components/socials'
 
 import {
   getAboutPage,
   getBlogPage,
-  getBlogPosts,
   getHomePage,
+  getLatestPosts,
+  getLatestVideos,
   getProjectsPage,
   getSocialsPage,
-  getVideos,
 } from '../lib/api'
 
 function Index({ home, about, projects, socials, videos, blog, posts }) {
@@ -30,8 +31,9 @@ function Index({ home, about, projects, socials, videos, blog, posts }) {
         <Home home={home} />
         <About about={about} />
         <Projects projects={projects} />
-        <Socials socials={socials} videos={videos} />
+        <Videos videos={videos} />
         <Blog blog={blog} posts={posts} />
+        <Socials socials={socials} />
       </main>
     </>
   )
@@ -44,9 +46,9 @@ export async function getStaticProps() {
       getAboutPage(),
       getProjectsPage(),
       getSocialsPage(),
-      getVideos(),
+      getLatestVideos(),
       getBlogPage(),
-      getBlogPosts(),
+      getLatestPosts(),
     ])
 
   return {
