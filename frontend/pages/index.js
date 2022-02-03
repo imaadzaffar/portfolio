@@ -17,6 +17,7 @@ import {
   getProjectsPage,
   getSocialsPage,
 } from '../lib/api'
+import Footer from '../components/footer'
 
 function Index({ home, about, projects, socials, videos, blog, posts }) {
   return (
@@ -34,6 +35,7 @@ function Index({ home, about, projects, socials, videos, blog, posts }) {
         <Videos videos={videos} />
         <Blog blog={blog} posts={posts} />
         <Socials socials={socials} />
+        <Footer />
       </main>
     </>
   )
