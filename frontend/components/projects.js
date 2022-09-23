@@ -25,14 +25,8 @@ function ProjectCard(props) {
   const { name, description, type, technologies, linkLive, linkCode } =
     props.project
 
-  let visibility = ''
-  if (props.index >= 4) {
-    visibility = 'hidden lg:block'
-  } else if (props.index >= 3) {
-    visibility = 'hidden md:block'
-  }
   return (
-    <div className={`card-text ${visibility}`}>
+    <div className="card-text">
       <div className="flex">
         <h3 className="text-xl md:text-2xl text-slate-700 dark:text-slate-300 font-header font-bold">
           {`${name}`}
