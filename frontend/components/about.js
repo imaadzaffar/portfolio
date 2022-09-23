@@ -16,13 +16,13 @@ export default function About({ about }) {
         >
           {about.data.attributes.description}
         </ReactMarkdown>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+        {/* <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
           {about.data.attributes.technologies.map((technology) => (
             <li key={technology.text} className="text-slate-300">
               {technology.text}
             </li>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   )
