@@ -5,14 +5,14 @@ import Home from '../components/home'
 import About from '../components/about'
 import Projects from '../components/projects'
 import Videos from '../components/youtube'
-import Blog from '../components/blog'
+// import Blog from '../components/blog'
 import Socials from '../components/socials'
 
 import {
   getAboutPage,
-  getBlogPage,
+  // getBlogPage,
   getHomePage,
-  getLatestPosts,
+  // getLatestPosts,
   getLatestVideos,
   getProjectsPage,
   getSocialsPage,
@@ -33,8 +33,6 @@ function Index({ home, about, projects, socials, videos, blog, posts }) {
         <About about={about} />
         <Projects projects={projects} />
         <Videos videos={videos} />
-        <Blog blog={blog} posts={posts} />
-        <Socials socials={socials} />
         <Footer />
       </main>
     </>
@@ -42,19 +40,18 @@ function Index({ home, about, projects, socials, videos, blog, posts }) {
 }
 
 export async function getStaticProps() {
-  const [home, about, projects, socials, videos, blog, posts] =
-    await Promise.all([
-      getHomePage(),
-      getAboutPage(),
-      getProjectsPage(),
-      getSocialsPage(),
-      getLatestVideos(),
-      getBlogPage(),
-      getLatestPosts(),
-    ])
+  const [home, about, projects, socials, videos] = await Promise.all([
+    getHomePage(),
+    getAboutPage(),
+    getProjectsPage(),
+    getSocialsPage(),
+    getLatestVideos(),
+    // getBlogPage(),
+    // getLatestPosts(),
+  ])
 
   return {
-    props: { home, about, projects, socials, videos, blog, posts },
+    props: { home, about, projects, socials, videos },
   }
 }
 
