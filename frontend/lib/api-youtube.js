@@ -4,7 +4,6 @@ function getYoutubeUrl(path = '') {
 
 async function getYoutubeAPI(path) {
   const requestUrl = getYoutubeUrl(path)
-  // console.log(requestUrl)
 }
 
 export async function getYoutubeVideos(maxResults) {
@@ -13,11 +12,11 @@ export async function getYoutubeVideos(maxResults) {
   )
   const videos = await fetch(requestUrl)
     .then((res) => {
-      // console.log(res)
       return res.json()
     })
     .then((data) => {
-      return data.items
+      const results = data.items
+      return results.filter((result) => result.id.kind === 'youtube#video')
     })
 
   return videos

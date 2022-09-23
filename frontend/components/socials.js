@@ -41,35 +41,3 @@ function SocialIcon(props) {
     </a>
   )
 }
-
-function VideoCard(props) {
-  const { thumbnails, title, description, publishedAt } = props.video.snippet
-  const videoId = props.video.id.videoId
-  const thumbnailSrc = thumbnails.high.url
-
-  const dateString = moment(publishedAt).fromNow()
-
-  return (
-    <a
-      href={`https://www.youtube.com/watch?v=${videoId}`}
-      target="_blank"
-      rel="noreferrer"
-    >
-      <div className="flex flex-col card overflow-hidden">
-        <img
-          src={thumbnailSrc}
-          alt="video"
-          className="aspect-video object-cover"
-        ></img>
-        <div className="p-6">
-          <h3 className="text-xl text-slate-700 dark:text-slate-100 font-header font-bold">
-            {title}
-          </h3>
-          <p className="text-base text-slate-500 dark:text-slate-400 mt-2">
-            uploaded {dateString}
-          </p>
-        </div>
-      </div>
-    </a>
-  )
-}

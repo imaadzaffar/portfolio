@@ -14,7 +14,7 @@ export default function Youtube({ videos }) {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
           {videos.map((video, index) => (
-            <VideoCard video={video} index={index} key={index} />
+            <VideoCard video={video} key={index} />
           ))}
         </div>
       </div>
@@ -23,25 +23,20 @@ export default function Youtube({ videos }) {
 }
 
 function VideoCard(props) {
+  console.log(props)
   const { thumbnails, title, description, publishedAt } = props.video.snippet
   const videoId = props.video.id.videoId
   const thumbnailSrc = thumbnails.high.url
 
   const dateString = moment(publishedAt).fromNow()
 
-  let visibility = ''
-  if (props.index >= 2) {
-    visibility = 'hidden lg:block'
-  } else if (props.index >= 1) {
-    visibility = 'hidden md:block'
-  }
   return (
     <a
       href={`https://www.youtube.com/watch?v=${videoId}`}
       target="_blank"
       rel="noreferrer"
     >
-      <div className={`card flex flex-col overflow-hidden ${visibility}`}>
+      <div className="card flex flex-col overflow-hidden hover:opacity-70 transition-opacity">
         <img
           src={thumbnailSrc}
           alt="video"
