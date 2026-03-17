@@ -1,25 +1,24 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer components {
-  .nav-link {
-    @apply block md:inline-block text-left md:text-center text-xl font-medium lowercase text-slate-400 hover:text-slate-300 px-4 transition;
-  }
-
-  .tag {
-    @apply inline-block bg-slate-700 text-sm font-bold rounded-full mr-2 mb-2 px-4 py-1;
-  }
-
-  .card {
-    @apply rounded-xl hover:shadow-xl shadow-slate-300 dark:bg-slate-800 dark:shadow-none;
-  }
-
-  .card-text {
-    @apply card p-6;
-  }
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
+html, body {
+  height: 100%;
+  background: #080c0b;
+}
+
+#root {
+  height: 100%;
+}
+
+.content-card {
+  width: clamp(240px, 28vw, 320px);
+}
+
+@media (max-width: 768px) {
+  .content-card {
+    width: 90vw;
+  }
 }
