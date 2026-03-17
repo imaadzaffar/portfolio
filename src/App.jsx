@@ -246,6 +246,7 @@ export default function App() {
     }
 
     function onPointerMove(e) {
+      if (e.cancelable) e.preventDefault()
       if (!s.isDragging) return
       const { x, y } = clientXY(e)
       const dx = x - s.prevX
@@ -272,8 +273,8 @@ export default function App() {
     mount.addEventListener('mousedown',  onPointerDown)
     window.addEventListener('mousemove', onPointerMove)
     window.addEventListener('mouseup',   onPointerUp)
-    mount.addEventListener('touchstart', onPointerDown, { passive: true })
-    window.addEventListener('touchmove', onPointerMove, { passive: true })
+    mount.addEventListener('touchstart', onPointerDown, { passive: false })
+    window.addEventListener('touchmove', onPointerMove, { passive: false })
     window.addEventListener('touchend',  onPointerUp)
 
     const idleAxis = new THREE.Vector3(0.3, 1, 0.1).normalize()
@@ -410,6 +411,7 @@ export default function App() {
               height: 'clamp(240px, 35vw, 380px)',
               cursor: 'grab',
               flexShrink: 0,
+              touchAction: 'none',
             }}
           />
 
