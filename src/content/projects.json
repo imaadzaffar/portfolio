@@ -1,5 +1,6 @@
 [
   {"id": "munch", "name": "Munch", "blurb": "Halal restaurant discovery, London-first.", "year": null, "status": null, "todo": "link, year and status"},
+  {"id": "sparq", "name": "Sparq", "blurb": null, "year": null, "status": null, "todo": "blurb, link, year and status"},
   {"id": "layers", "name": "Layers", "blurb": "Smart skincare companion app.", "year": null, "status": null, "todo": "link, year and status"},
   {"id": "uncooked-jobs", "name": "Uncooked Jobs", "blurb": "Truth-first recruiting for early-stage startups.", "year": null, "status": null, "todo": "link, year and status"},
   {"id": "deep-research", "name": "deep-research", "blurb": "Browse the web and summarize findings.", "repo": "https://github.com/imaadzaffar/deep-research", "year": 2025, "status": null, "todo": "status"},

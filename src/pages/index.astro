@@ -13,8 +13,8 @@ const projects = await getCollection('projects')
 const items = (await getCollection('interests')).map((e) => e.data)
 const interests = items.filter((i) => i.kind === 'interest')
 const books = items.filter((i) => i.kind === 'book')
-const exampleTravel = process.env.TRAVEL_EXAMPLE === '1'
-const visited = exampleTravel ? ['GB', 'JP', 'QA', 'PK', 'TW', 'US'] : (await getCollection('travel')).map((e) => e.data.id)
+const travel = (await getCollection('travel')).map((e) => e.data)
+const highlights = items.filter((i) => i.kind === 'highlight')
 const links = Object.fromEntries((await getCollection('links')).map((e) => [e.data.id, e.data]))
 const gallery = await getCollection('gallery')
 
@@ -49,6 +49,7 @@ const jsonLd = {
     <section id="now" class="prose" style="--i:1">
       <h2>Now</h2>
       <NowBody />
+      {now.data.aside && <span class="hn hn-now" aria-hidden="true">{now.data.aside}</span>}
       {now.data.todo && <p><mark class="ph">[Placeholder: {now.data.todo}]</mark></p>}
     </section>
 
@@ -91,13 +92,17 @@ const jsonLd = {
       <div class="cols">
         <ul class="list">
           {interests.map((i) => <li><Todo value={i.label} todo={i.todo} /></li>)}
-          <li>Travel, {visited.length ? <a href="#map">{visited.length} countries</a> : <mark class="ph">[Placeholder: visited countries]</mark>}</li>
+          <li>Travel, <a href="#map">{travel.length} countries</a></li>
         </ul>
         <ul class="list books">
           {books.map((b) => <li><Todo value={b.title} todo={b.todo} /> <em class={b.status}>{b.status}</em></li>)}
         </ul>
       </div>
-      <div id="map"><WorldMap visited={visited} example={exampleTravel} /></div>
+      <h3>Highlights</h3>
+      <ul class="list">
+        {highlights.map((h) => <li>{h.text}</li>)}
+      </ul>
+      <div id="map"><WorldMap travel={travel} /></div>
     </section>
 
     <section class="prose" style="--i:5">

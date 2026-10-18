@@ -1,5 +1,6 @@
 ---
 updated: 2026-10-18
+aside: embrace the hard
 todo: 2 to 4 lines in Imaad's own words
 ---
 

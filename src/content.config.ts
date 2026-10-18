@@ -6,7 +6,7 @@ const todo = z.string().optional()
 
 const now = defineCollection({
   loader: glob({ pattern: 'now.md', base: './src/content' }),
-  schema: z.object({ updated: z.coerce.date(), todo }),
+  schema: z.object({ updated: z.coerce.date(), aside: z.string().optional(), todo }),
 })
 
 const timeline = defineCollection({
@@ -27,6 +27,7 @@ const interests = defineCollection({
   loader: file('./src/content/interests.json'),
   schema: z.discriminatedUnion('kind', [
     z.object({ kind: z.literal('interest'), label: z.string().nullable(), todo }),
+    z.object({ kind: z.literal('highlight'), text: z.string() }),
     z.object({
       kind: z.literal('book'),
       title: z.string().nullable(),
@@ -55,6 +56,7 @@ const travel = defineCollection({
   loader: file('./src/content/travel.json'),
   schema: z.object({
     id: z.enum(alpha2),
+    favourite: z.boolean().default(false),
     year: z.number().int().optional(),
     note: z.string().optional(),
   }),

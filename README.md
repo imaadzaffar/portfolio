@@ -20,17 +20,15 @@ All copy lives in `src/content/`. The schemas in `src/content.config.ts` validat
 
 | File | What it holds |
 | --- | --- |
-| `now.md` | The Now paragraph. `updated` drives "Last updated" and the footer date. |
+| `now.md` | The Now paragraph. `updated` drives "Last updated" and the footer date. `aside` is the handwritten note beside it. |
 | `timeline.json` | One row per role: `year`, `role`, `org`, optional `url`, `note`, `current` (adds the dot), and `aside` (the handwritten margin note). |
 | `projects.json` | One row per project: `name`, `blurb`, optional `url` and `repo`, `year`, and `status` (`live`, `archived`, `wip` or `null`). |
-| `interests.json` | Entries with `kind` set to `interest` or `book` (`status`: `reading` or `read`). |
-| `travel.json` | Visited countries: `[{ "id": "GB" }]`, with optional `year` and `note`. `id` must be an ISO 3166-1 alpha-2 code. The world map and the Travel count come from this file. |
+| `interests.json` | Entries with `kind` set to `interest`, `highlight` (`text`) or `book` (`status`: `reading` or `read`). |
+| `travel.json` | Visited countries: `{ "id": "JP", "favourite": true }`, with optional `year` and `note`. `id` must be an ISO 3166-1 alpha-2 code. The world map, its favourites (in teal) and the Travel count come from this file. Countries too small to see get a dot. |
 | `links.json` | The links used in the Links sentence. `id` is one of `x`, `instagram`, `youtube`, `github`, `linkedin`, `email`. For email, `url` is the bare address. |
 | `gallery/*.json` | One file per photo: `image` (a path next to the JSON file), `caption`, `place`, `date`. |
 
 Placeholders follow one rule. Set a value to `null` and give a `todo` to show a grey `[Placeholder: …]` mark. Keep a value and add a `todo` to show it with a small `[todo]` mark. Delete the `todo` once the content is real. `npm run todos` lists what is left.
-
-`TRAVEL_EXAMPLE=1 npm run build` renders the map with a labelled example list for screenshots. Never deploy with it set.
 
 To add a photo, drop the image into `src/content/gallery/` and add a JSON file next to it. Astro resizes it to WebP at build time.
 
