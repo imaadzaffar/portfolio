@@ -22,7 +22,8 @@ All copy lives in `src/content/`. The schemas in `src/content.config.ts` validat
 | --- | --- |
 | `now.md` | The Now paragraph. `updated` drives "Last updated" and the footer date. |
 | `timeline.json` | One row per role: `year`, `role`, `org`, optional `url`, `note`, `current` (adds the dot), and `aside` (the handwritten margin note). |
-| `interests.json` | Entries with `kind` set to `interest`, `book` (`status`: `reading` or `read`) or `project` (`url` or `null`). |
+| `projects.json` | One row per project: `name`, `blurb`, optional `url` and `repo`, `year`, and `status` (`live`, `archived`, `wip` or `null`). |
+| `interests.json` | Entries with `kind` set to `interest`, `book` (`status`: `reading` or `read`) or ``book` only. |
 | `links.json` | The links used in the Links sentence. `id` is one of `x`, `instagram`, `youtube`, `github`, `linkedin`, `email`. For email, `url` is the bare address. |
 | `gallery/*.json` | One file per photo: `image` (a path next to the JSON file), `caption`, `place`, `date`. |
 

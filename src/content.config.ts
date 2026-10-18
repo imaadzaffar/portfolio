@@ -32,14 +32,20 @@ const interests = defineCollection({
       status: z.enum(['reading', 'read']),
       todo,
     }),
-    z.object({
-      kind: z.literal('project'),
-      name: z.string(),
-      blurb: z.string().optional(),
-      url: z.string().url().nullable(),
-      todo,
-    }),
   ]),
+})
+
+const projects = defineCollection({
+  loader: file('./src/content/projects.json'),
+  schema: z.object({
+    name: z.string(),
+    blurb: z.string().nullable(),
+    url: z.string().url().optional(),
+    repo: z.string().url().optional(),
+    year: z.number().int().nullable(),
+    status: z.enum(['live', 'archived', 'wip']).nullable(),
+    todo,
+  }),
 })
 
 export const linkIds = ['x', 'instagram', 'youtube', 'github', 'linkedin', 'email'] as const
@@ -66,4 +72,4 @@ const gallery = defineCollection({
     }),
 })
 
-export const collections = { now, timeline, interests, links, gallery }
+export const collections = { now, timeline, projects, interests, links, gallery }

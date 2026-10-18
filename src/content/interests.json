@@ -1,14 +1,11 @@
 [
-  { "id": "agentic-dev", "kind": "interest", "label": "Agentic dev" },
-  { "id": "llms", "kind": "interest", "label": "Applied LLMs" },
-  { "id": "mobile", "kind": "interest", "label": "Mobile apps" },
-  { "id": "travel", "kind": "interest", "label": "Travel, 20+ countries" },
-  { "id": "interests-todo", "kind": "interest", "label": null, "todo": "confirm interests" },
-  { "id": "courage", "kind": "book", "title": "The Courage to Be Disliked", "status": "read", "todo": "confirm" },
-  { "id": "grit", "kind": "book", "title": "Grit", "status": "read", "todo": "confirm" },
-  { "id": "why-we-sleep", "kind": "book", "title": "Why We Sleep", "status": "read", "todo": "confirm" },
-  { "id": "current-book", "kind": "book", "title": null, "status": "reading", "todo": "current book" },
-  { "id": "munch", "kind": "project", "name": "Munch", "blurb": "halal restaurant discovery", "url": null, "todo": "link" },
-  { "id": "layers", "kind": "project", "name": "Layers", "blurb": "a skincare companion", "url": null, "todo": "link" },
-  { "id": "uncooked-jobs", "kind": "project", "name": "Uncooked Jobs", "url": null, "todo": "link" }
+  {"id": "agentic-dev", "kind": "interest", "label": "Agentic dev"},
+  {"id": "llms", "kind": "interest", "label": "Applied LLMs"},
+  {"id": "mobile", "kind": "interest", "label": "Mobile apps"},
+  {"id": "travel", "kind": "interest", "label": "Travel, 20+ countries"},
+  {"id": "interests-todo", "kind": "interest", "label": null, "todo": "confirm interests"},
+  {"id": "courage", "kind": "book", "title": "The Courage to Be Disliked", "status": "read", "todo": "confirm"},
+  {"id": "grit", "kind": "book", "title": "Grit", "status": "read", "todo": "confirm"},
+  {"id": "why-we-sleep", "kind": "book", "title": "Why We Sleep", "status": "read", "todo": "confirm"},
+  {"id": "current-book", "kind": "book", "title": null, "status": "reading", "todo": "current book"}
 ]

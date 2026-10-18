@@ -8,10 +8,10 @@ const now = await getEntry('now', 'now')
 if (!now) throw new Error('src/content/now.md is missing')
 const { Content: NowBody } = await render(now)
 const timeline = await getCollection('timeline')
+const projects = await getCollection('projects')
 const items = (await getCollection('interests')).map((e) => e.data)
 const interests = items.filter((i) => i.kind === 'interest')
 const books = items.filter((i) => i.kind === 'book')
-const projects = items.filter((i) => i.kind === 'project')
 const links = Object.fromEntries((await getCollection('links')).map((e) => [e.data.id, e.data]))
 const gallery = await getCollection('gallery')
 
@@ -66,7 +66,24 @@ const jsonLd = {
       </ol>
     </section>
 
-    <section style="--i:3">
+    <section id="projects" style="--i:3">
+      <h2>Projects</h2>
+      <ol class="ledger">
+        {projects.map(({ data: p }) => (
+          <li>
+            <span class="yr">{p.year ?? <mark class="ph">20??</mark>}</span>
+            <span class="role">
+              <b>{p.url ?? p.repo ? <a href={p.url ?? p.repo}>{p.name}</a> : p.name}</b>
+              {p.status && <em class="status">{p.status}</em>}
+              {p.url && p.repo && <a class="repo" href={p.repo}>repo</a>}
+              <small><Todo value={p.blurb} todo={p.todo} /></small>
+            </span>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section style="--i:4">
       <h2>Interests &amp; books</h2>
       <div class="cols">
         <ul class="list">
@@ -76,15 +93,9 @@ const jsonLd = {
           {books.map((b) => <li><Todo value={b.title} todo={b.todo} /> <em class={b.status}>{b.status}</em></li>)}
         </ul>
       </div>
-      <p class="note">
-        On the side:
-        {projects.map((p, n) => (
-          <>{n === projects.length - 1 && 'and '}{p.url ? <a href={p.url}>{p.name}</a> : p.name}{p.blurb && `, ${p.blurb}`}{p.todo && <> <mark class="ph">[{p.todo}]</mark></>}{n < projects.length - 1 ? '; ' : '.'}</>
-        ))}
-      </p>
     </section>
 
-    <section class="prose" style="--i:4">
+    <section class="prose" style="--i:5">
       <h2>Links</h2>
       <p>
         I post on <a href={links.x.url}>X</a> and <a href={links.instagram.url}>Instagram</a>, make videos on
@@ -94,7 +105,7 @@ const jsonLd = {
       </p>
     </section>
 
-    <section id="gallery" style="--i:5">
+    <section id="gallery" style="--i:6">
       <h2>Gallery</h2>
       <div class="grid">
         {gallery.map(({ data: g }) => (
@@ -111,7 +122,7 @@ const jsonLd = {
     </section>
   </main>
 
-  <footer style="--i:6">
+  <footer style="--i:7">
     <p><em>Site last updated on {long}.</em></p>
     <p>When on the planet: 51.52°N, 0.13°W (London)</p>
     <p><a href="https://web.archive.org/web/20010515235714/http://www.dcs.warwick.ac.uk/~nasir/">My dad's homepage, 1998</a></p>
