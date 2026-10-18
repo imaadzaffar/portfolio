@@ -1,0 +1,49 @@
+---
+import { geoNaturalEarth1, geoPath } from 'd3-geo'
+import { feature } from 'topojson-client'
+import { presimplify, simplify, quantile } from 'topojson-simplify'
+import type { Topology, GeometryCollection } from 'topojson-specification'
+import type { Feature, FeatureCollection, Geometry } from 'geojson'
+import countries from 'i18n-iso-countries'
+import en from 'i18n-iso-countries/langs/en.json'
+import world from 'world-atlas/countries-110m.json'
+
+interface Props {
+  visited: string[]
+  example: boolean
+}
+const { visited, example } = Astro.props
+
+countries.registerLocale(en)
+const raw = presimplify(structuredClone(world) as unknown as Topology<{ countries: GeometryCollection<{ name: string }> }>)
+const topology = simplify(raw, quantile(raw, 0.2))
+const all = feature(topology, topology.objects.countries) as FeatureCollection<Geometry, { name: string }>
+const land: FeatureCollection<Geometry, { name: string }> = {
+  type: 'FeatureCollection',
+  features: all.features.filter((f) => f.id !== '010'),
+}
+const width = 680
+const height = 330
+const path = geoPath(geoNaturalEarth1().fitSize([width, height], land)).digits(1)
+const codeOf = (f: Feature) => (f.id ? countries.numericToAlpha2(String(f.id)) : undefined)
+const seen = new Set(visited)
+const visitedShapes = land.features.filter((f) => seen.has(codeOf(f) ?? ''))
+const outline = land.features.filter((f) => !visitedShapes.includes(f)).map((f) => path(f)).join('')
+const mapNames = new Map(land.features.map((f) => [codeOf(f), f.properties.name]))
+const nameOf = (code: string) => mapNames.get(code) ?? countries.getName(code, 'en') ?? code
+const names = visited.map(nameOf).sort()
+const caption = example
+  ? `Example data, not real travel: ${names.length} countries`
+  : `${names.length} countries`
+---
+
+<figure class="map">
+  <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label={`World map, ${caption}`}>
+    <path class="land" d={outline} />
+    {visitedShapes.map((f) => (
+      <path class="visited" d={path(f)}><title>{f.properties.name}</title></path>
+    ))}
+  </svg>
+  <figcaption>{visited.length ? caption : <mark class="ph">[Placeholder: visited countries]</mark>}</figcaption>
+  {names.length > 0 && <ul class="sr-only">{names.map((n) => <li>{n}</li>)}</ul>}
+</figure>

@@ -88,6 +88,12 @@ mark.ph { background: var(--mark); color: var(--mark-ink); padding: 0 0.25em; bo
 .books em.reading { color: var(--ink); }
 
 #gallery { position: relative; }
+.map { margin: 0.75rem 0 0; }
+.map svg { display: block; width: 100%; height: auto; }
+.map .land { fill: none; stroke: var(--muted); stroke-opacity: 0.55; stroke-width: 0.5; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.map .visited { fill: var(--ink); fill-opacity: 0.85; stroke: var(--bg); stroke-width: 0.5; vector-effect: non-scaling-stroke; }
+.map .visited:hover { fill: var(--accent); fill-opacity: 1; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
 figure { margin: 0; }
 .grid img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 2px; filter: saturate(0); }

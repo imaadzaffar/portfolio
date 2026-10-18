@@ -2,7 +2,6 @@
   {"id": "agentic-dev", "kind": "interest", "label": "Agentic dev"},
   {"id": "llms", "kind": "interest", "label": "Applied LLMs"},
   {"id": "mobile", "kind": "interest", "label": "Mobile apps"},
-  {"id": "travel", "kind": "interest", "label": "Travel, 20+ countries"},
   {"id": "interests-todo", "kind": "interest", "label": null, "todo": "confirm interests"},
   {"id": "courage", "kind": "book", "title": "The Courage to Be Disliked", "status": "read", "todo": "confirm"},
   {"id": "grit", "kind": "book", "title": "Grit", "status": "read", "todo": "confirm"},

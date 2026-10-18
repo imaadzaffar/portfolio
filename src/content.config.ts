@@ -1,5 +1,6 @@
 import { defineCollection, z } from 'astro:content'
 import { file, glob } from 'astro/loaders'
+import countries from 'i18n-iso-countries'
 
 const todo = z.string().optional()
 
@@ -48,6 +49,17 @@ const projects = defineCollection({
   }),
 })
 
+const alpha2 = Object.keys(countries.getAlpha2Codes()) as [string, ...string[]]
+
+const travel = defineCollection({
+  loader: file('./src/content/travel.json'),
+  schema: z.object({
+    id: z.enum(alpha2),
+    year: z.number().int().optional(),
+    note: z.string().optional(),
+  }),
+})
+
 export const linkIds = ['x', 'instagram', 'youtube', 'github', 'linkedin', 'email'] as const
 
 const links = defineCollection({
@@ -72,4 +84,4 @@ const gallery = defineCollection({
     }),
 })
 
-export const collections = { now, timeline, projects, interests, links, gallery }
+export const collections = { now, timeline, projects, interests, travel, links, gallery }
