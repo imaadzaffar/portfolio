@@ -1,0 +1,9 @@
+---
+interface Props {
+  value: string | null
+  todo?: string
+}
+const { value, todo } = Astro.props
+---
+
+{value === null ? <mark class="ph">[Placeholder: {todo}]</mark> : <>{value}{todo && <> <mark class="ph">[{todo}]</mark></>}</>}

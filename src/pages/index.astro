@@ -1,0 +1,128 @@
+---
+import { getCollection, getEntry, render } from 'astro:content'
+import { Image } from 'astro:assets'
+import Base from '../layouts/Base.astro'
+import Todo from '../components/Todo.astro'
+
+const now = await getEntry('now', 'now')
+if (!now) throw new Error('src/content/now.md is missing')
+const { Content: NowBody } = await render(now)
+const timeline = await getCollection('timeline')
+const items = (await getCollection('interests')).map((e) => e.data)
+const interests = items.filter((i) => i.kind === 'interest')
+const books = items.filter((i) => i.kind === 'book')
+const projects = items.filter((i) => i.kind === 'project')
+const links = Object.fromEntries((await getCollection('links')).map((e) => [e.data.id, e.data]))
+const gallery = await getCollection('gallery')
+
+const short = now.data.updated.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
+const long = now.data.updated.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
+const site = Astro.site!.href
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Imaad Zaffar',
+  url: site,
+  jobTitle: 'Founding Engineer',
+  worksFor: { '@type': 'Organization', name: 'Aloft', url: 'https://aloft.so' },
+  alumniOf: { '@type': 'CollegeOrUniversity', name: 'University College London' },
+  sameAs: Object.values(links).flatMap((l) => (l.url && !l.todo ? [l.url] : [])),
+}
+---
+
+<Base
+  title="Imaad Zaffar"
+  description="Imaad Zaffar is founding engineer #2 at Aloft, building AI teammates for property management. Formerly a software engineer at Bloomberg. UCL Computer Science."
+  jsonLd={jsonLd}
+>
+  <header class="top">
+    <h1 class="name">Imaad Zaffar</h1>
+    <p class="updated">Last updated <time datetime={now.data.updated.toISOString().slice(0, 10)}>{short}</time></p>
+    <button class="toggle" type="button" aria-label="Toggle dark mode">◐</button>
+  </header>
+
+  <main id="main">
+    <section id="now" class="prose" style="--i:1">
+      <h2>Now</h2>
+      <NowBody />
+      {now.data.todo && <p><mark class="ph">[Placeholder: {now.data.todo}]</mark></p>}
+    </section>
+
+    <section style="--i:2">
+      <h2>Timeline</h2>
+      <ol class="ledger">
+        {timeline.map(({ data: t }) => (
+          <li>
+            <span class="yr">{t.year ?? <mark class="ph">20??</mark>}</span>
+            <span class="role">
+              <b>{t.role && `${t.role}, `}{t.url ? <a href={t.url}>{t.org}</a> : t.org}</b>
+              {t.current && <span class="dot" role="img" aria-label="now" />}
+              <small><Todo value={t.note} todo={t.todo} /></small>
+              {t.aside && <span class:list={['hn', t.aside.startsWith('←') && 'hn-l']} aria-hidden="true">{t.aside}</span>}
+            </span>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section style="--i:3">
+      <h2>Interests &amp; books</h2>
+      <div class="cols">
+        <ul class="list">
+          {interests.map((i) => <li><Todo value={i.label} todo={i.todo} /></li>)}
+        </ul>
+        <ul class="list books">
+          {books.map((b) => <li><Todo value={b.title} todo={b.todo} /> <em class={b.status}>{b.status}</em></li>)}
+        </ul>
+      </div>
+      <p class="note">
+        On the side:
+        {projects.map((p, n) => (
+          <>{n === projects.length - 1 && 'and '}{p.url ? <a href={p.url}>{p.name}</a> : p.name}{p.blurb && `, ${p.blurb}`}{p.todo && <> <mark class="ph">[{p.todo}]</mark></>}{n < projects.length - 1 ? '; ' : '.'}</>
+        ))}
+      </p>
+    </section>
+
+    <section class="prose" style="--i:4">
+      <h2>Links</h2>
+      <p>
+        I post on <a href={links.x.url}>X</a> and <a href={links.instagram.url}>Instagram</a>, make videos on
+        <a href={links.youtube.url}>YouTube</a>, and keep code on <a href={links.github.url}>GitHub</a>. I'm also on
+        <a href={links.linkedin.url}>LinkedIn</a>{links.linkedin.todo && <> <mark class="ph">[{links.linkedin.todo}]</mark></>}.
+        Email me at {links.email.url ? <a href={`mailto:${links.email.url}`}>{links.email.url}</a> : <mark class="ph">[Placeholder: {links.email.todo}]</mark>}.
+      </p>
+    </section>
+
+    <section id="gallery" style="--i:5">
+      <h2>Gallery</h2>
+      <div class="grid">
+        {gallery.map(({ data: g }) => (
+          <figure>
+            <Image src={g.image} alt={g.caption ?? 'Placeholder photo'} class:list={[g.caption === null && 'placeholder']} widths={[200, 400]} sizes="(max-width: 560px) 31vw, 176px" />
+            <figcaption>
+              {g.caption ?? 'Placeholder'}
+              {(g.place || g.date) && <span>· {[g.place, g.date?.getUTCFullYear()].filter(Boolean).join(', ')}</span>}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+      <p class="hn hn-g" aria-hidden="true">more soon</p>
+    </section>
+  </main>
+
+  <footer style="--i:6">
+    <p><em>Site last updated on {long}.</em></p>
+    <p>When on the planet: 51.52°N, 0.13°W (London)</p>
+    <p><a href="https://web.archive.org/web/20010515235714/http://www.dcs.warwick.ac.uk/~nasir/">My dad's homepage, 1998</a></p>
+  </footer>
+</Base>
+
+<script>
+  document.querySelector('.toggle')?.addEventListener('click', () => {
+    const root = document.documentElement
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark'
+    root.dataset.theme = next
+    localStorage.setItem('theme', next)
+  })
+</script>

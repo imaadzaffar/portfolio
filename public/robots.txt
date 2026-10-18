@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://imaadzaffar.com/sitemap-index.xml

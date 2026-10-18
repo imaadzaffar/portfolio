@@ -1,0 +1,9 @@
+[
+  { "id": "aloft", "year": 2026, "role": "Founding engineer #2", "org": "Aloft", "url": "https://aloft.so", "note": "AI teammates for property management. Since Jun 2026.", "current": true, "aside": "employee #2 ↗" },
+  { "id": "uncooked", "year": 2025, "role": "Co-founder", "org": "uncooked", "note": null, "todo": "one-line note on uncooked" },
+  { "id": "redwood", "year": null, "role": null, "org": "Redwood Founders", "note": null, "todo": "Redwood Founders dates, role and one-line note" },
+  { "id": "bloomberg", "year": 2024, "role": "Software engineer", "org": "Bloomberg", "note": "Oct 2024 to May 2026." },
+  { "id": "sky", "year": 2023, "role": "SWE intern", "org": "Sky", "note": null, "todo": "one-line note on the Sky internship" },
+  { "id": "harvard", "year": null, "role": "ML research intern", "org": "Harvard Medical School", "note": null, "todo": "Harvard dates and research topic" },
+  { "id": "ucl", "year": 2021, "role": "BSc Computer Science", "org": "UCL", "note": "First class, 2021 to 2024.", "aside": "← started here" }
+]
