@@ -7,6 +7,8 @@ Hey, I’m <button type="button" class="term" popovertarget="name-meaning">Imaad
 
 My parents were born and raised in completely different worlds.
 
+![Watercolour of Pakistan, with mountains and a mosque, beside Taiwan, with its coastline and cherry blossom](../assets/parents-worlds.png)
+
 - My dad hails from the ancient city of Multan, Pakistan
 - My mum hails from the maritime city of Kaohsiung, Taiwan
 
