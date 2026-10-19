@@ -57,11 +57,10 @@ const projects = defineCollection({
   loader: file('./src/content/projects.json'),
   schema: z.object({
     name: z.string(),
-    blurb: z.string().nullable(),
+    blurb: z.string(),
     url: z.string().url().optional(),
     repo: z.string().url().optional(),
-    status: z.enum(['live', 'archived', 'wip']).nullable(),
-    todo,
+    status: z.enum(['live', 'archived', 'wip', 'experiment']),
   }),
 })
 

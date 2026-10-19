@@ -1,6 +1,6 @@
 [
-  {"id": "munch", "name": "Munch", "blurb": "Halal restaurant discovery, London-first.", "status": null, "todo": "link and status"},
+  {"id": "munch", "name": "Munch", "blurb": "Halal restaurant discovery, London-first.", "url": "https://munchapp.io", "status": "live"},
   {"id": "cubyl-timer", "name": "Cubyl Timer", "blurb": "Rubik's cube scrambles and solve timing.", "url": "https://cubyl-timer.netlify.app/", "repo": "https://github.com/imaadzaffar/cubyl-timer", "status": "live"},
-  {"id": "tube-time-atlas", "name": "Tube Time Atlas", "blurb": "An interactive atlas of the London Underground network through time (1900–2026).", "status": null, "todo": "link and status"},
-  {"id": "sitr", "name": "Sitr", "blurb": "Chrome extension that blurs inappropriate posts and media on X.", "status": null, "todo": "link and status"}
+  {"id": "tube-time-atlas", "name": "Tube Time Atlas", "blurb": "An interactive atlas of the London Underground network through time (1900–2026).", "url": "https://tube-time-atlas.netlify.app", "repo": "https://github.com/imaadzaffar/tubetime", "status": "live"},
+  {"id": "sitr", "name": "Sitr", "blurb": "Chrome extension that blurs inappropriate posts and media on X.", "repo": "https://github.com/imaadzaffar/sitr", "status": "experiment"}
 ]

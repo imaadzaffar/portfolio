@@ -98,9 +98,9 @@ const jsonLd = {
           <li>
             <span class="role">
               <b>{p.url ?? p.repo ? <a href={p.url ?? p.repo}>{p.name}</a> : p.name}</b>
-              {p.status && <em class="status">{p.status}</em>}
+              <em class="status">{p.status}</em>
               {p.url && p.repo && <a class="repo" href={p.repo}>repo</a>}
-              <small><Todo value={p.blurb} todo={p.todo} /></small>
+              <small>{p.blurb}</small>
             </span>
           </li>
         ))}
