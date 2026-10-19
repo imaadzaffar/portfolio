@@ -151,4 +151,7 @@ section, footer { animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; anim
 }
 
 /* Links: logo inside each link in the sentence */
-.logo { width: 1em; height: 1em; vertical-align: -0.125em; margin-right: 0.25em; }
+.social { padding: 0 0.15em; }
+.logo { width: 1.05em; height: 1.05em; vertical-align: -0.15em; }
+/* 44px tap target from inline padding, which doesn't change line height */
+@media (pointer: coarse) { .social { position: relative; z-index: 1; padding: 14px; margin: 0 -10px; } }
