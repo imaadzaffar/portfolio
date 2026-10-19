@@ -26,7 +26,7 @@ All copy lives in `src/content/`. The schemas in `src/content.config.ts` validat
 | `books.json` | The Bookmarks section, in display order: `title`, `author` and `status` (`listening`, `reading` or `read`). |
 | `travel.json` | Visited countries: `{ "id": "JP", "favourite": true }`, with optional `year` and `note`. `id` must be an ISO 3166-1 alpha-2 code. The world map, its favourites (in teal) and the Travel count come from this file. Countries too small to see get a dot. |
 | `links.json` | The links used in the Links sentence. `id` is one of `x`, `instagram`, `youtube`, `github`, `linkedin`. |
-| `gallery/*.json` | One file per photo: `image` (a path next to the JSON file), `caption`, `date` (`YYYY-MM`), `alt`, `url` (the Instagram post), optional `position` (CSS `object-position` for the square crop). Files sort by name, so `01` shows first. |
+| `gallery/*.json` | One file per photo: `image` (a path next to the JSON file), `caption`, `date` (`YYYY-MM`), `alt`, `url` (the Instagram post), optional `position` (CSS `object-position`, used if a wide photo gets cropped on small screens). The caption shows as `caption · Mon YYYY`. Files sort by name, so `01` shows first. |
 
 Placeholders follow one rule. Set a value to `null` and give a `todo` to show a grey `[Placeholder: …]` mark. Keep a value and add a `todo` to show it with a small `[todo]` mark. Delete the `todo` once the content is real. `npm run todos` lists what is left.
 
