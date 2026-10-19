@@ -22,6 +22,13 @@ const gallery = await getCollection('gallery')
 const short = now.data.updated.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
 const long = now.data.updated.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
 const site = Astro.site!.href
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+const formatDate = (d: string) => {
+  if (d === 'present') return 'present'
+  const [year, part] = d.split('-')
+  if (!part) return year
+  return `${part === 'summer' ? 'Summer' : months[Number(part) - 1]} ${year}`
+}
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -56,20 +63,27 @@ const jsonLd = {
 
     <section style="--i:2">
       <h2>Timeline</h2>
+      <blockquote class="quote">
+        <p>You can’t connect the dots looking forward, only looking backwards.</p>
+        <cite>- Steve Jobs</cite>
+      </blockquote>
       <ol class="ledger">
-        {timeline.map(({ data: t }) => t.kind === 'life' ? (
-          <li class="life">
-            <span class="yr">{t.year}</span>
-            <span class="role"><b>{t.text} {t.place}</b> <Flag code={t.country} /></span>
-          </li>
-        ) : (
-          <li>
-            <span class="yr">{t.year ?? <mark class="ph">20??</mark>}</span>
+        {timeline.map(({ data: t }) => (
+          <li class:list={[t.kind]}>
+            <span class="yr">
+              {t.start ? formatDate(t.start) : <mark class="ph">20??</mark>}
+              {t.end && <span class="end">– {formatDate(t.end)}</span>}
+            </span>
             <span class="role">
-              <b>{t.role && `${t.role}, `}{t.url ? <a href={t.url}>{t.org}</a> : t.org}</b>
-              {t.current && <span class="dot" role="img" aria-label="now" />}
-              <small><Todo value={t.note} todo={t.todo} /></small>
-              {t.aside && <span class:list={['hn', t.aside.startsWith('←') && 'hn-l']} aria-hidden="true">{t.aside}</span>}
+              {t.kind === 'life' ? (
+                <b>{t.text}{t.place && ` ${t.place}`}</b>
+              ) : (
+                <b>{t.role && `${t.role}, `}{t.url ? <a href={t.url}>{t.org}</a> : t.org}</b>
+              )}
+              {t.kind === 'life' && t.country && <Flag code={t.country} />}
+              {t.kind === 'work' && t.current && <span class="dot" role="img" aria-label="now" />}
+              {(t.note || t.todo) && <small><Todo value={t.note ?? null} todo={t.todo} /></small>}
+              {t.kind === 'work' && t.aside && <span class="hn" aria-hidden="true">{t.aside}</span>}
             </span>
           </li>
         ))}
@@ -144,6 +158,41 @@ const jsonLd = {
 </Base>
 
 <script>
+  const term = document.querySelector<HTMLButtonElement>('.term')
+  const meaning = document.getElementById('name-meaning')
+  if (term && meaning) {
+    let pinned = false
+    let hovering = false
+    const open = () => meaning.matches(':popover-open')
+    const place = () => {
+      const r = term.getBoundingClientRect()
+      meaning.style.left = `${Math.min(r.left, innerWidth - meaning.offsetWidth - 8)}px`
+      meaning.style.top = `${r.bottom + 6}px`
+    }
+    meaning.addEventListener('toggle', (e) => {
+      if ((e as ToggleEvent).newState === 'open') place()
+      else pinned = false
+    })
+    term.addEventListener('pointerenter', (e) => {
+      hovering = e.pointerType === 'mouse'
+      if (hovering && !open()) meaning.showPopover()
+    })
+    term.addEventListener('pointerleave', (e) => {
+      hovering = false
+      if (e.pointerType === 'mouse' && !pinned && open()) meaning.hidePopover()
+    })
+    term.addEventListener('click', (e) => {
+      if (hovering && open() && !pinned) {
+        e.preventDefault()
+        pinned = true
+      }
+    })
+    term.addEventListener('focus', () => {
+      if (term.matches(':focus-visible') && !open()) meaning.showPopover()
+    })
+    addEventListener('scroll', () => open() && meaning.hidePopover(), { passive: true })
+  }
+
   document.querySelector('.toggle')?.addEventListener('click', () => {
     const root = document.documentElement
     const next = root.dataset.theme === 'dark' ? 'light' : 'dark'

@@ -10,26 +10,31 @@ const now = defineCollection({
   schema: z.object({ updated: z.coerce.date(), aside: z.string().optional(), todo }),
 })
 
+const partialDate = z.string().regex(/^\d{4}(-(0[1-9]|1[0-2]|summer))?$/, 'use YYYY, YYYY-MM or YYYY-summer')
+const when = { start: partialDate.nullable(), end: z.union([partialDate, z.literal('present')]).optional() }
+
 const timeline = defineCollection({
   loader: file('./src/content/timeline.json'),
   schema: z.discriminatedUnion('kind', [
     z.object({
       kind: z.literal('work'),
-      year: z.number().int().nullable(),
+      ...when,
       role: z.string().nullable(),
       org: z.string(),
       url: z.string().url().optional(),
-      note: z.string().nullable(),
+      note: z.string().optional(),
       current: z.boolean().default(false),
       aside: z.string().optional(),
       todo,
     }),
     z.object({
       kind: z.literal('life'),
-      year: z.number().int(),
+      ...when,
       text: z.string(),
-      place: z.string(),
-      country: z.enum(alpha2),
+      place: z.string().optional(),
+      country: z.enum(alpha2).optional(),
+      note: z.string().optional(),
+      todo,
     }),
   ]),
 })

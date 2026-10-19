@@ -1,7 +1,15 @@
 ---
-updated: 2026-10-18
+updated: 2026-10-19
 aside: embrace the hard
-todo: 2 to 4 lines in Imaad's own words
 ---
 
-I'm founding engineer #2 at [Aloft](https://aloft.so), building AI teammates for property management. Before that I spent a year and a half as a software engineer at Bloomberg. I'm constantly tinkering with cool tech for projects with purpose.
+Hey, I’m <button type="button" class="term" popovertarget="name-meaning">Imaad</button><span id="name-meaning" class="meaning" popover>Arabic · meaning “pillar” · <span lang="ar" dir="rtl">عماد</span></span>. The first thing people ask me is where I’m from. So I thought it’s only fitting I open my website with that too, and trust me you wouldn’t guess.
+
+My parents were born and raised in completely different worlds.
+
+- My dad hails from the ancient city of Multan, Pakistan
+- My mum hails from the maritime city of Kaohsiung, Taiwan
+
+Through destiny, they both moved to the UK to study and that’s where they met.
+
+I’m a traveller who’s passionate about building delightful pieces of technology, with purpose. Currently figuring out my life path and striving to improve myself.
