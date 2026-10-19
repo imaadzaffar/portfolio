@@ -97,9 +97,9 @@ const jsonLd = {
         {projects.map(({ data: p }) => (
           <li>
             <span class="role">
-              <b>{p.url ?? p.repo ? <a href={p.url ?? p.repo}>{p.name}</a> : p.name}</b>
+              <b>{p.url ? <a href={p.url}>{p.name}</a> : p.name}</b>
               <em class="status">{p.status}</em>
-              {p.url && p.repo && <a class="repo" href={p.repo}>repo</a>}
+              {p.repo && <a class="repo" href={p.repo}>repo</a>}
               <small>{p.blurb}</small>
             </span>
           </li>
