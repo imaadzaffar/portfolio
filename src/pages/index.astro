@@ -118,15 +118,18 @@ const jsonLd = {
 
     <section id="gallery" style="--i:6">
       <h2>Gallery</h2>
-      <div class="grid">
-        {gallery.map(({ data: g }) => (
-          <figure>
-            <a href={g.url} rel="noopener"><Picture src={g.image} alt={g.alt} width={480} formats={['avif', 'webp']} widths={[240, 480]} sizes="(max-width: 560px) 31vw, 176px" style={g.position && `object-position: ${g.position}`} /></a>
-            <figcaption>
-              {g.caption} <span>· {formatDate(g.date)}</span>
-            </figcaption>
-          </figure>
-        ))}
+      <div class="carousel" role="region" aria-label="Gallery, scrolls sideways" tabindex="0">
+        {gallery.map(({ data: g }) => {
+          const ar = g.image.width / g.image.height
+          return (
+            <figure>
+              <a href={g.url} rel="noopener"><Picture src={g.image} alt={g.alt} formats={['avif', 'webp']} widths={[640, 960]} sizes={`(max-width: 560px) ${Math.round(288 * ar)}px, ${Math.round(352 * ar)}px`} style={g.position && `object-position: ${g.position}`} /></a>
+              <figcaption>
+                {g.caption} <span>· {formatDate(g.date)}</span>
+              </figcaption>
+            </figure>
+          )
+        })}
       </div>
     </section>
     <section class="prose" style="--i:7">
