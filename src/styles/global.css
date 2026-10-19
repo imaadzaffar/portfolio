@@ -11,6 +11,7 @@
   --mark: #eff0f2;
   --mark-ink: #5a5c62;
   --pencil: #5d6672;
+  --life: #9a4f1f;
   color-scheme: light;
 }
 :root[data-theme='dark'] {
@@ -22,6 +23,7 @@
   --mark: #1b1c1f;
   --mark-ink: #9a9da4;
   --pencil: #8e97a4;
+  --life: #e09a63;
   color-scheme: dark;
 }
 
@@ -77,6 +79,10 @@ mark.ph { background: var(--mark); color: var(--mark-ink); padding: 0 0.25em; bo
 .role b { font-weight: 500; }
 .role small { display: block; color: var(--muted); font-family: var(--serif); font-size: 15.5px; line-height: 1.5; }
 .status, .repo { margin-left: 0.5rem; font-family: var(--mono); font-size: 12px; font-style: normal; color: var(--muted); }
+.life .yr, .life b { color: var(--life); }
+.life b::before { content: ''; display: inline-block; width: 6px; height: 6px; margin-right: 0.45rem; vertical-align: 0.1em; border: 1.5px solid currentColor; border-radius: 50%; }
+.flag { display: inline-block; width: 1.05em; height: 0.7em; margin-left: 0.15rem; vertical-align: -0.05em; border-radius: 1px; overflow: hidden; box-shadow: 0 0 0 1px var(--line); }
+.flag svg { display: block; width: 100%; height: 100%; }
 .dot {
   display: inline-block; width: 7px; height: 7px; margin-left: 0.5rem; vertical-align: middle;
   border-radius: 50%; background: var(--accent);

@@ -3,6 +3,7 @@ import { file, glob } from 'astro/loaders'
 import countries from 'i18n-iso-countries'
 
 const todo = z.string().optional()
+const alpha2 = Object.keys(countries.getAlpha2Codes()) as [string, ...string[]]
 
 const now = defineCollection({
   loader: glob({ pattern: 'now.md', base: './src/content' }),
@@ -11,16 +12,26 @@ const now = defineCollection({
 
 const timeline = defineCollection({
   loader: file('./src/content/timeline.json'),
-  schema: z.object({
-    year: z.number().int().nullable(),
-    role: z.string().nullable(),
-    org: z.string(),
-    url: z.string().url().optional(),
-    note: z.string().nullable(),
-    current: z.boolean().default(false),
-    aside: z.string().optional(),
-    todo,
-  }),
+  schema: z.discriminatedUnion('kind', [
+    z.object({
+      kind: z.literal('work'),
+      year: z.number().int().nullable(),
+      role: z.string().nullable(),
+      org: z.string(),
+      url: z.string().url().optional(),
+      note: z.string().nullable(),
+      current: z.boolean().default(false),
+      aside: z.string().optional(),
+      todo,
+    }),
+    z.object({
+      kind: z.literal('life'),
+      year: z.number().int(),
+      text: z.string(),
+      place: z.string(),
+      country: z.enum(alpha2),
+    }),
+  ]),
 })
 
 const interests = defineCollection({
@@ -48,8 +59,6 @@ const projects = defineCollection({
     todo,
   }),
 })
-
-const alpha2 = Object.keys(countries.getAlpha2Codes()) as [string, ...string[]]
 
 const travel = defineCollection({
   loader: file('./src/content/travel.json'),

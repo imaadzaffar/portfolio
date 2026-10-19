@@ -4,6 +4,7 @@ import { Image } from 'astro:assets'
 import Base from '../layouts/Base.astro'
 import Todo from '../components/Todo.astro'
 import WorldMap from '../components/WorldMap.astro'
+import Flag from '../components/Flag.astro'
 
 const now = await getEntry('now', 'now')
 if (!now) throw new Error('src/content/now.md is missing')
@@ -56,7 +57,12 @@ const jsonLd = {
     <section style="--i:2">
       <h2>Timeline</h2>
       <ol class="ledger">
-        {timeline.map(({ data: t }) => (
+        {timeline.map(({ data: t }) => t.kind === 'life' ? (
+          <li class="life">
+            <span class="yr">{t.year}</span>
+            <span class="role"><b>{t.text} {t.place}</b> <Flag code={t.country} /></span>
+          </li>
+        ) : (
           <li>
             <span class="yr">{t.year ?? <mark class="ph">20??</mark>}</span>
             <span class="role">

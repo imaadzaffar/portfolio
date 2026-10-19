@@ -21,7 +21,7 @@ All copy lives in `src/content/`. The schemas in `src/content.config.ts` validat
 | File | What it holds |
 | --- | --- |
 | `now.md` | The Now paragraph. `updated` drives "Last updated" and the footer date. `aside` is the handwritten note beside it. |
-| `timeline.json` | One row per role: `year`, `role`, `org`, optional `url`, `note`, `current` (adds the dot), and `aside` (the handwritten margin note). |
+| `timeline.json` | Rows in display order, newest first. `kind: "work"` rows have `year`, `role`, `org`, optional `url`, `note`, `current` (adds the dot) and `aside` (the handwritten margin note). `kind: "life"` rows have `year`, `text`, `place` and `country` (ISO alpha-2, shown as a flag). |
 | `projects.json` | One row per project: `name`, `blurb`, optional `url` and `repo`, and `status` (`live`, `archived`, `wip` or `null`). |
 | `interests.json` | Entries with `kind` set to `interest`, `highlight` (`text`) or `book` (`status`: `reading` or `read`). |
 | `travel.json` | Visited countries: `{ "id": "JP", "favourite": true }`, with optional `year` and `note`. `id` must be an ISO 3166-1 alpha-2 code. The world map, its favourites (in teal) and the Travel count come from this file. Countries too small to see get a dot. |

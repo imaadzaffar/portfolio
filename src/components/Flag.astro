@@ -1,0 +1,15 @@
+---
+import * as flags from 'country-flag-icons/string/3x2'
+import countries from 'i18n-iso-countries'
+import en from 'i18n-iso-countries/langs/en.json'
+
+interface Props {
+  code: string
+}
+const { code } = Astro.props
+countries.registerLocale(en)
+const name = countries.getName(code, 'en') ?? code
+const svg = (flags as Record<string, string>)[code]
+---
+
+<span class="flag" role="img" aria-label={name} title={name} set:html={svg} />
