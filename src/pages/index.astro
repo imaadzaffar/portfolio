@@ -72,10 +72,9 @@ const jsonLd = {
 
     <section id="projects" style="--i:3">
       <h2>Projects</h2>
-      <ol class="ledger">
+      <ul class="ledger plain">
         {projects.map(({ data: p }) => (
           <li>
-            <span class="yr">{p.year ?? <mark class="ph">20??</mark>}</span>
             <span class="role">
               <b>{p.url ?? p.repo ? <a href={p.url ?? p.repo}>{p.name}</a> : p.name}</b>
               {p.status && <em class="status">{p.status}</em>}
@@ -84,7 +83,7 @@ const jsonLd = {
             </span>
           </li>
         ))}
-      </ol>
+      </ul>
     </section>
 
     <section style="--i:4">

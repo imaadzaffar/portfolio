@@ -44,7 +44,6 @@ const projects = defineCollection({
     blurb: z.string().nullable(),
     url: z.string().url().optional(),
     repo: z.string().url().optional(),
-    year: z.number().int().nullable(),
     status: z.enum(['live', 'archived', 'wip']).nullable(),
     todo,
   }),

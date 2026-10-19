@@ -22,7 +22,7 @@ All copy lives in `src/content/`. The schemas in `src/content.config.ts` validat
 | --- | --- |
 | `now.md` | The Now paragraph. `updated` drives "Last updated" and the footer date. `aside` is the handwritten note beside it. |
 | `timeline.json` | One row per role: `year`, `role`, `org`, optional `url`, `note`, `current` (adds the dot), and `aside` (the handwritten margin note). |
-| `projects.json` | One row per project: `name`, `blurb`, optional `url` and `repo`, `year`, and `status` (`live`, `archived`, `wip` or `null`). |
+| `projects.json` | One row per project: `name`, `blurb`, optional `url` and `repo`, and `status` (`live`, `archived`, `wip` or `null`). |
 | `interests.json` | Entries with `kind` set to `interest`, `highlight` (`text`) or `book` (`status`: `reading` or `read`). |
 | `travel.json` | Visited countries: `{ "id": "JP", "favourite": true }`, with optional `year` and `note`. `id` must be an ISO 3166-1 alpha-2 code. The world map, its favourites (in teal) and the Travel count come from this file. Countries too small to see get a dot. |
 | `links.json` | The links used in the Links sentence. `id` is one of `x`, `instagram`, `youtube`, `github`, `linkedin`, `email`. For email, `url` is the bare address. |

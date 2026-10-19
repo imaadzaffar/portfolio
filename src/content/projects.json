@@ -1,12 +1,6 @@
 [
-  {"id": "munch", "name": "Munch", "blurb": "Halal restaurant discovery, London-first.", "year": null, "status": null, "todo": "link, year and status"},
-  {"id": "sparq", "name": "Sparq", "blurb": null, "year": null, "status": null, "todo": "blurb, link, year and status"},
-  {"id": "layers", "name": "Layers", "blurb": "Smart skincare companion app.", "year": null, "status": null, "todo": "link, year and status"},
-  {"id": "uncooked-jobs", "name": "Uncooked Jobs", "blurb": "Truth-first recruiting for early-stage startups.", "year": null, "status": null, "todo": "link, year and status"},
-  {"id": "deep-research", "name": "deep-research", "blurb": "Browse the web and summarize findings.", "repo": "https://github.com/imaadzaffar/deep-research", "year": 2025, "status": null, "todo": "status"},
-  {"id": "emb-augmenter", "name": "emb-augmenter", "blurb": "Embedding augmentation with GANs.", "repo": "https://github.com/imaadzaffar/emb-augmenter", "year": 2022, "status": null, "todo": "status"},
-  {"id": "matrix-mayhem", "name": "Matrix Mayhem", "blurb": "A maths learning platform for students, built for the ENGF0002 module.", "url": "https://youtu.be/VyMqWpu23DQ", "repo": "https://github.com/imaadzaffar/matrix-mayhem", "year": 2022, "status": null, "todo": "status"},
-  {"id": "chess-stats", "name": "chess-stats", "blurb": "Chess stats for players on lichess.org and chess.com.", "url": "https://chess-stats.netlify.app/", "repo": "https://github.com/imaadzaffar/chess-stats", "year": 2021, "status": "live"},
-  {"id": "cubyl-timer", "name": "cubyl-timer", "blurb": "Rubik's cube scrambles and solve timing.", "url": "https://cubyl-timer.netlify.app/", "repo": "https://github.com/imaadzaffar/cubyl-timer", "year": 2020, "status": "live"},
-  {"id": "weekly", "name": "Weekly", "blurb": "Android app showing which school week it is (A or B), mainly for King Edward VI Schools, Birmingham.", "repo": "https://github.com/imaadzaffar/weekly", "year": 2020, "status": null, "todo": "status (the Play Store listing returns 404)"}
+  {"id": "munch", "name": "Munch", "blurb": "Halal restaurant discovery, London-first.", "status": null, "todo": "link and status"},
+  {"id": "cubyl-timer", "name": "Cubyl Timer", "blurb": "Rubik's cube scrambles and solve timing.", "url": "https://cubyl-timer.netlify.app/", "repo": "https://github.com/imaadzaffar/cubyl-timer", "status": "live"},
+  {"id": "tube-time-atlas", "name": "Tube Time Atlas", "blurb": "An interactive atlas of the London Underground network through time (1900–2026).", "status": null, "todo": "link and status"},
+  {"id": "sitr", "name": "Sitr", "blurb": "Chrome extension that blurs inappropriate posts and media on X.", "status": null, "todo": "link and status"}
 ]
