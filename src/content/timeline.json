@@ -7,6 +7,7 @@
   {"id": "japan", "kind": "life", "start": "2024-summer", "text": "6 weeks teaching in", "place": "Japan", "country": "JP", "note": "where I fell in love with teaching and Japan"},
   {"id": "sky", "kind": "work", "start": "2023", "role": "SWE intern", "org": "Sky", "note": "first experience in big corp, free ice cream", "todo": "add month"},
   {"id": "harvard", "kind": "work", "start": "2022-summer", "role": "ML research intern", "org": "Harvard Medical School", "note": "taste of academia and research, lived in an MIT frat house, ΝΔ (Nu Delta)"},
+  {"id": "feast", "kind": "work", "start": "2021-12", "role": "Co-founder", "org": "Feast", "note": "marketplace for homecooks, pivoted to social media for foodies"},
   {"id": "ucl", "kind": "work", "start": "2021", "end": "2024", "role": "BSc Computer Science", "org": "UCL", "note": "First class.", "todo": "add start and end months"},
   {"id": "london", "kind": "life", "start": "2021", "text": "moved to", "place": "London", "country": "GB", "todo": "add month"},
   {"id": "birmingham", "kind": "life", "start": "2016", "text": "moved back to", "place": "Birmingham", "country": "GB", "todo": "add month"},
