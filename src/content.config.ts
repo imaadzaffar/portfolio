@@ -82,8 +82,7 @@ const links = defineCollection({
   schema: z.object({
     id: z.enum(linkIds),
     label: z.string(),
-    url: z.string().nullable(),
-    todo,
+    url: z.string().url(),
   }),
 })
 

@@ -39,7 +39,7 @@ const jsonLd = {
   jobTitle: 'Founding Engineer',
   worksFor: { '@type': 'Organization', name: 'Aloft', url: 'https://aloft.so' },
   alumniOf: { '@type': 'CollegeOrUniversity', name: 'University College London' },
-  sameAs: Object.values(links).flatMap((l) => (l.url && !l.todo ? [l.url] : [])),
+  sameAs: Object.values(links).map((l) => l.url),
 }
 ---
 
@@ -130,7 +130,7 @@ const jsonLd = {
       <p>
         I post on <a href={links.x.url}><Logo id="x" />X</a> and <a href={links.instagram.url}><Logo id="instagram" />Instagram</a>, make videos on
         <a href={links.youtube.url}><Logo id="youtube" />YouTube</a>, and keep code on <a href={links.github.url}><Logo id="github" />GitHub</a>. I'm also on
-        <a href={links.linkedin.url}><Logo id="linkedin" />LinkedIn</a>{links.linkedin.todo && <> <mark class="ph">[{links.linkedin.todo}]</mark></>}.
+        <a href={links.linkedin.url}><Logo id="linkedin" />LinkedIn</a>.
       </p>
     </section>
 
