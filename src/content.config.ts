@@ -96,7 +96,6 @@ const gallery = defineCollection({
       date: partialDate,
       alt: z.string(),
       url: z.string().url(),
-      credit: z.string().optional(),
       position: z.string().optional(),
     }),
 })

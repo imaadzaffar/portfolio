@@ -142,7 +142,6 @@ const jsonLd = {
             <a href={g.url} rel="noopener"><Picture src={g.image} alt={g.alt} width={480} formats={['avif', 'webp']} widths={[240, 480]} sizes="(max-width: 560px) 31vw, 176px" style={g.position && `object-position: ${g.position}`} /></a>
             <figcaption>
               {g.caption} <span>· {formatDate(g.date)}</span>
-              {g.credit && <small class="credit">{g.credit}</small>}
             </figcaption>
           </figure>
         ))}

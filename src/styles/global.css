@@ -125,7 +125,6 @@ a:focus-visible, .term:focus-visible { outline: 1px solid var(--accent); outline
 figure { margin: 0; }
 .grid a, .grid picture { display: block; }
 .grid img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 2px; }
-.credit { display: block; overflow-wrap: anywhere; font-family: var(--mono); font-size: 0.72rem; color: var(--muted); }
 figcaption { font-size: 0.82em; margin-top: 0.35rem; }
 figcaption span { color: var(--muted); }
 
