@@ -112,7 +112,7 @@ a:focus-visible, .term:focus-visible { outline: 1px solid var(--accent); outline
 .books em { font-style: normal; color: var(--muted); font-size: 0.85em; margin-left: 0.35rem; }
 .books em.reading { color: var(--ink); }
 
-#gallery, #now { position: relative; }
+#now { position: relative; }
 .map { margin: 0.75rem 0 0; }
 .map svg { display: block; width: 100%; height: auto; }
 .map .land { fill: none; stroke: var(--muted); stroke-opacity: 0.55; stroke-width: 0.5; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
@@ -123,8 +123,9 @@ a:focus-visible, .term:focus-visible { outline: 1px solid var(--accent); outline
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
 figure { margin: 0; }
-.grid img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 2px; filter: saturate(0); }
-[data-theme='dark'] .grid img.placeholder { filter: invert(0.9); }
+.grid a, .grid picture { display: block; }
+.grid img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 2px; }
+.credit { display: block; overflow-wrap: anywhere; font-family: var(--mono); font-size: 0.72rem; color: var(--muted); }
 figcaption { font-size: 0.82em; margin-top: 0.35rem; }
 figcaption span { color: var(--muted); }
 
@@ -134,7 +135,6 @@ figcaption span { color: var(--muted); }
   color: var(--pencil); transform: rotate(-4deg); transform-origin: left center;
 }
 .hn-now { top: 2.4rem; transform: rotate(-5deg); }
-.hn-g { top: auto; bottom: 2.2rem; transform: rotate(-6deg); }
 
 footer { margin-top: 4rem; padding-top: 1.25rem; border-top: 1px solid var(--line); color: var(--muted); }
 footer p { margin: 0 0 0.3rem; }
@@ -144,8 +144,7 @@ section, footer { animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; anim
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 
 @media (max-width: 1000px) {
-  .hn, .hn-g { position: static; display: inline-block; margin-top: 0.2rem; transform: rotate(-1.5deg); white-space: normal; }
-  .hn-g { margin-top: 0.6rem; }
+  .hn { position: static; display: inline-block; margin-top: 0.2rem; transform: rotate(-1.5deg); white-space: normal; }
 }
 @media (max-width: 420px) {
   .cols { grid-template-columns: 1fr; gap: 0; }

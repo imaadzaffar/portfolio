@@ -1,6 +1,6 @@
 ---
 import { getCollection, getEntry, render } from 'astro:content'
-import { Image } from 'astro:assets'
+import { Picture } from 'astro:assets'
 import Base from '../layouts/Base.astro'
 import Todo from '../components/Todo.astro'
 import WorldMap from '../components/WorldMap.astro'
@@ -18,7 +18,7 @@ const books = items.filter((i) => i.kind === 'book')
 const travel = (await getCollection('travel')).map((e) => e.data)
 const highlights = items.filter((i) => i.kind === 'highlight')
 const links = Object.fromEntries((await getCollection('links')).map((e) => [e.data.id, e.data]))
-const gallery = await getCollection('gallery')
+const gallery = (await getCollection('gallery')).sort((a, b) => a.id.localeCompare(b.id))
 
 const short = now.data.updated.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
 const long = now.data.updated.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
@@ -139,15 +139,14 @@ const jsonLd = {
       <div class="grid">
         {gallery.map(({ data: g }) => (
           <figure>
-            <Image src={g.image} alt={g.caption ?? 'Placeholder photo'} class:list={[g.caption === null && 'placeholder']} widths={[200, 400]} sizes="(max-width: 560px) 31vw, 176px" />
+            <a href={g.url} rel="noopener"><Picture src={g.image} alt={g.alt} width={480} formats={['avif', 'webp']} widths={[240, 480]} sizes="(max-width: 560px) 31vw, 176px" style={g.position && `object-position: ${g.position}`} /></a>
             <figcaption>
-              {g.caption ?? 'Placeholder'}
-              {(g.place || g.date) && <span>· {[g.place, g.date?.getUTCFullYear()].filter(Boolean).join(', ')}</span>}
+              {g.caption} <span>· {formatDate(g.date)}</span>
+              {g.credit && <small class="credit">{g.credit}</small>}
             </figcaption>
           </figure>
         ))}
       </div>
-      <p class="hn hn-g" aria-hidden="true">more soon</p>
     </section>
   </main>
 

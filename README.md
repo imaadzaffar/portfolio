@@ -26,11 +26,11 @@ All copy lives in `src/content/`. The schemas in `src/content.config.ts` validat
 | `interests.json` | Entries with `kind` set to `interest`, `highlight` (`text`) or `book` (`status`: `reading` or `read`). |
 | `travel.json` | Visited countries: `{ "id": "JP", "favourite": true }`, with optional `year` and `note`. `id` must be an ISO 3166-1 alpha-2 code. The world map, its favourites (in teal) and the Travel count come from this file. Countries too small to see get a dot. |
 | `links.json` | The links used in the Links sentence. `id` is one of `x`, `instagram`, `youtube`, `github`, `linkedin`. |
-| `gallery/*.json` | One file per photo: `image` (a path next to the JSON file), `caption`, `place`, `date`. |
+| `gallery/*.json` | One file per photo: `image` (a path next to the JSON file), `caption`, `date` (`YYYY-MM`), `alt`, `url` (the Instagram post), optional `credit` and `position` (CSS `object-position` for the square crop). Files sort by name, so `01` shows first. |
 
 Placeholders follow one rule. Set a value to `null` and give a `todo` to show a grey `[Placeholder: …]` mark. Keep a value and add a `todo` to show it with a small `[todo]` mark. Delete the `todo` once the content is real. `npm run todos` lists what is left.
 
-To add a photo, drop the image into `src/content/gallery/` and add a JSON file next to it. Astro resizes it to WebP at build time.
+To add a photo, drop the image into `src/content/gallery/` and add a JSON file next to it. Astro resizes it to AVIF and WebP at build time.
 
 ## Files
 
@@ -38,6 +38,5 @@ To add a photo, drop the image into `src/content/gallery/` and add a JSON file n
 - `src/layouts/Base.astro` holds the head: meta, Open Graph, JSON-LD, fonts, and the theme script that runs before paint.
 - `src/styles/global.css` holds every style. Colours are CSS variables, with a dark set under `[data-theme='dark']`.
 - `public/` holds `og.png` (1200×630), `favicon.svg` and `robots.txt`.
-- `scripts/placeholders.mjs` regenerated the grey gallery placeholders. Delete it with the placeholders.
 
 The previous three.js cube site is in git history before this branch.

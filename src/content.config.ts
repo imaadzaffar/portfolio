@@ -92,10 +92,12 @@ const gallery = defineCollection({
   schema: ({ image }) =>
     z.object({
       image: image(),
-      caption: z.string().nullable(),
-      place: z.string().nullable(),
-      date: z.coerce.date().nullable(),
-      todo,
+      caption: z.string(),
+      date: partialDate,
+      alt: z.string(),
+      url: z.string().url(),
+      credit: z.string().optional(),
+      position: z.string().optional(),
     }),
 })
 
