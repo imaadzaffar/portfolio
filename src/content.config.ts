@@ -39,18 +39,9 @@ const timeline = defineCollection({
   ]),
 })
 
-const interests = defineCollection({
-  loader: file('./src/content/interests.json'),
-  schema: z.discriminatedUnion('kind', [
-    z.object({ kind: z.literal('interest'), label: z.string().nullable(), todo }),
-    z.object({ kind: z.literal('highlight'), text: z.string() }),
-    z.object({
-      kind: z.literal('book'),
-      title: z.string().nullable(),
-      status: z.enum(['reading', 'read']),
-      todo,
-    }),
-  ]),
+const books = defineCollection({
+  loader: file('./src/content/books.json'),
+  schema: z.object({ title: z.string(), author: z.string(), status: z.enum(['listening', 'reading', 'read']) }),
 })
 
 const projects = defineCollection({
@@ -98,4 +89,4 @@ const gallery = defineCollection({
     }),
 })
 
-export const collections = { now, timeline, projects, interests, travel, links, gallery }
+export const collections = { now, timeline, projects, books, travel, links, gallery }

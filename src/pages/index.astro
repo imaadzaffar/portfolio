@@ -12,11 +12,8 @@ if (!now) throw new Error('src/content/now.md is missing')
 const { Content: NowBody } = await render(now)
 const timeline = await getCollection('timeline')
 const projects = await getCollection('projects')
-const items = (await getCollection('interests')).map((e) => e.data)
-const interests = items.filter((i) => i.kind === 'interest')
-const books = items.filter((i) => i.kind === 'book')
+const books = (await getCollection('books')).map((e) => e.data)
 const travel = (await getCollection('travel')).map((e) => e.data)
-const highlights = items.filter((i) => i.kind === 'highlight')
 const links = Object.fromEntries((await getCollection('links')).map((e) => [e.data.id, e.data]))
 const gallery = (await getCollection('gallery')).sort((a, b) => a.id.localeCompare(b.id))
 
@@ -108,30 +105,15 @@ const jsonLd = {
     </section>
 
     <section style="--i:4">
-      <h2>Interests &amp; books</h2>
-      <div class="cols">
-        <ul class="list">
-          {interests.map((i) => <li><Todo value={i.label} todo={i.todo} /></li>)}
-          <li>Travel, <a href="#map">{travel.length} countries</a></li>
-        </ul>
-        <ul class="list books">
-          {books.map((b) => <li><Todo value={b.title} todo={b.todo} /> <em class={b.status}>{b.status}</em></li>)}
-        </ul>
-      </div>
-      <h3>Highlights</h3>
-      <ul class="list">
-        {highlights.map((h) => <li>{h.text}</li>)}
-      </ul>
+      <h2>Travel</h2>
       <div id="map"><WorldMap travel={travel} /></div>
     </section>
 
-    <section class="prose" style="--i:5">
-      <h2>Links</h2>
-      <p>
-        I post on <SocialLink link={links.x} /> and <SocialLink link={links.instagram} />, make videos on
-        <SocialLink link={links.youtube} />, and keep code on <SocialLink link={links.github} />. I'm also on
-        <SocialLink link={links.linkedin} />.
-      </p>
+    <section style="--i:5">
+      <h2>Bookmarks</h2>
+      <ul class="list books">
+        {books.map((b) => <li>{b.title} <span class="author">{b.author}</span><em class="status">{b.status}</em></li>)}
+      </ul>
     </section>
 
     <section id="gallery" style="--i:6">
@@ -147,9 +129,17 @@ const jsonLd = {
         ))}
       </div>
     </section>
+    <section class="prose" style="--i:7">
+      <h2>Links</h2>
+      <p>
+        I post on <SocialLink link={links.x} /> and <SocialLink link={links.instagram} />, make videos on
+        <SocialLink link={links.youtube} />, and keep code on <SocialLink link={links.github} />. I'm also on
+        <SocialLink link={links.linkedin} />.
+      </p>
+    </section>
   </main>
 
-  <footer style="--i:7">
+  <footer style="--i:8">
     <p><em>Site last updated on {long}.</em></p>
     <p>When on the planet: 51.52°N, 0.13°W (London)</p>
   </footer>
