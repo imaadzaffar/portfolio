@@ -75,7 +75,7 @@ const travel = defineCollection({
   }),
 })
 
-export const linkIds = ['x', 'instagram', 'youtube', 'github', 'linkedin', 'email'] as const
+export const linkIds = ['x', 'instagram', 'youtube', 'github', 'linkedin'] as const
 
 const links = defineCollection({
   loader: file('./src/content/links.json'),

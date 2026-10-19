@@ -4,6 +4,7 @@ import { Image } from 'astro:assets'
 import Base from '../layouts/Base.astro'
 import Todo from '../components/Todo.astro'
 import WorldMap from '../components/WorldMap.astro'
+import Logo from '../components/Logo.astro'
 import Flag from '../components/Flag.astro'
 
 const now = await getEntry('now', 'now')
@@ -127,10 +128,9 @@ const jsonLd = {
     <section class="prose" style="--i:5">
       <h2>Links</h2>
       <p>
-        I post on <a href={links.x.url}>X</a> and <a href={links.instagram.url}>Instagram</a>, make videos on
-        <a href={links.youtube.url}>YouTube</a>, and keep code on <a href={links.github.url}>GitHub</a>. I'm also on
-        <a href={links.linkedin.url}>LinkedIn</a>{links.linkedin.todo && <> <mark class="ph">[{links.linkedin.todo}]</mark></>}.
-        Email me at {links.email.url ? <a href={`mailto:${links.email.url}`}>{links.email.url}</a> : <mark class="ph">[Placeholder: {links.email.todo}]</mark>}.
+        I post on <a href={links.x.url}><Logo id="x" />X</a> and <a href={links.instagram.url}><Logo id="instagram" />Instagram</a>, make videos on
+        <a href={links.youtube.url}><Logo id="youtube" />YouTube</a>, and keep code on <a href={links.github.url}><Logo id="github" />GitHub</a>. I'm also on
+        <a href={links.linkedin.url}><Logo id="linkedin" />LinkedIn</a>{links.linkedin.todo && <> <mark class="ph">[{links.linkedin.todo}]</mark></>}.
       </p>
     </section>
 
