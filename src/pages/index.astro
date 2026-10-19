@@ -1,0 +1,190 @@
+---
+import { getCollection, getEntry, render } from 'astro:content'
+import { Picture } from 'astro:assets'
+import Base from '../layouts/Base.astro'
+import Todo from '../components/Todo.astro'
+import WorldMap from '../components/WorldMap.astro'
+import SocialLink from '../components/SocialLink.astro'
+import Flag from '../components/Flag.astro'
+
+const now = await getEntry('now', 'now')
+if (!now) throw new Error('src/content/now.md is missing')
+const { Content: NowBody } = await render(now)
+const timeline = await getCollection('timeline')
+const projects = await getCollection('projects')
+const books = (await getCollection('books')).map((e) => e.data)
+const travel = (await getCollection('travel')).map((e) => e.data)
+const links = Object.fromEntries((await getCollection('links')).map((e) => [e.data.id, e.data]))
+const gallery = (await getCollection('gallery')).sort((a, b) => a.id.localeCompare(b.id))
+
+const short = now.data.updated.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
+const long = now.data.updated.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
+const site = Astro.site!.href
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+const formatDate = (d: string) => {
+  if (d === 'present') return 'present'
+  const [year, part] = d.split('-')
+  if (!part) return year
+  return `${part === 'summer' ? 'Summer' : months[Number(part) - 1]} ${year}`
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Imaad Zaffar',
+  url: site,
+  jobTitle: 'Founding Engineer',
+  worksFor: { '@type': 'Organization', name: 'Aloft', url: 'https://aloft.so' },
+  alumniOf: { '@type': 'CollegeOrUniversity', name: 'University College London' },
+  sameAs: Object.values(links).map((l) => l.url),
+}
+---
+
+<Base
+  title="Imaad Zaffar"
+  description="Imaad Zaffar is founding engineer #2 at Aloft, building AI teammates for property management. Formerly a software engineer at Bloomberg. UCL Computer Science."
+  jsonLd={jsonLd}
+>
+  <header class="top">
+    <h1 class="name">Imaad Zaffar</h1>
+    <p class="updated">Last updated <time datetime={now.data.updated.toISOString().slice(0, 10)}>{short}</time></p>
+    <button class="toggle" type="button" aria-label="Toggle dark mode">◐</button>
+  </header>
+
+  <main id="main">
+    <section id="now" class="prose" style="--i:1">
+      <h2>Now</h2>
+      <NowBody />
+      {now.data.aside && <span class="hn hn-now" aria-hidden="true">{now.data.aside}</span>}
+      {now.data.todo && <p><mark class="ph">[Placeholder: {now.data.todo}]</mark></p>}
+    </section>
+
+    <section style="--i:2">
+      <h2>Timeline</h2>
+      <blockquote class="quote">
+        <p>You can’t connect the dots looking forward; you can only connect them looking backwards. So you have to trust that the dots will somehow connect in your future.</p>
+        <cite>- Steve Jobs</cite>
+      </blockquote>
+      <ol class="ledger">
+        {timeline.map(({ data: t }) => (
+          <li class:list={[t.kind]}>
+            <span class="yr">
+              {t.start ? formatDate(t.start) : <mark class="ph">20??</mark>}
+              {t.end && <span class="end">– {formatDate(t.end)}</span>}
+            </span>
+            <span class="role">
+              {t.kind === 'life' ? (
+                <b>{t.text}{t.place && ` ${t.place}`}</b>
+              ) : (
+                <b>{t.role && `${t.role}, `}{t.url ? <a href={t.url}>{t.org}</a> : t.org}</b>
+              )}
+              {t.kind === 'life' && t.country && <Flag code={t.country} />}
+              {t.kind === 'work' && t.current && <span class="dot" role="img" aria-label="now" />}
+              {(t.note || t.todo) && <small><Todo value={t.note ?? null} todo={t.todo} /></small>}
+              {t.kind === 'work' && t.aside && <span class="hn" aria-hidden="true">{t.aside}</span>}
+            </span>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section id="projects" style="--i:3">
+      <h2>Projects</h2>
+      <ul class="ledger plain">
+        {projects.map(({ data: p }) => (
+          <li>
+            <span class="role">
+              <b>{p.url ? <a href={p.url}>{p.name}</a> : p.name}</b>
+              <em class="status">{p.status}</em>
+              {p.repo && <a class="repo" href={p.repo}>repo</a>}
+              <small>{p.blurb}</small>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section style="--i:4">
+      <h2>Travel</h2>
+      <div id="map"><WorldMap travel={travel} /></div>
+    </section>
+
+    <section style="--i:5">
+      <h2>Bookmarks</h2>
+      <ul class="list books">
+        {books.map((b) => <li>{b.title} <span class="author">{b.author}</span><em class="status">{b.status}</em></li>)}
+      </ul>
+    </section>
+
+    <section id="gallery" style="--i:6">
+      <h2>Gallery</h2>
+      <div class="grid">
+        {gallery.map(({ data: g }) => (
+          <figure>
+            <a href={g.url} rel="noopener"><Picture src={g.image} alt={g.alt} width={480} formats={['avif', 'webp']} widths={[240, 480]} sizes="(max-width: 560px) 31vw, 176px" style={g.position && `object-position: ${g.position}`} /></a>
+            <figcaption>
+              {g.caption} <span>· {formatDate(g.date)}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+    <section class="prose" style="--i:7">
+      <h2>Links</h2>
+      <p>
+        I post on <SocialLink link={links.x} /> and <SocialLink link={links.instagram} />, make videos on
+        <SocialLink link={links.youtube} />, and keep code on <SocialLink link={links.github} />. I'm also on
+        <SocialLink link={links.linkedin} />.
+      </p>
+    </section>
+  </main>
+
+  <footer style="--i:8">
+    <p><em>Site last updated on {long}.</em></p>
+    <p>When on the planet: 51.52°N, 0.13°W (London)</p>
+  </footer>
+</Base>
+
+<script>
+  const term = document.querySelector<HTMLButtonElement>('.term')
+  const meaning = document.getElementById('name-meaning')
+  if (term && meaning) {
+    let pinned = false
+    let hovering = false
+    const open = () => meaning.matches(':popover-open')
+    const place = () => {
+      const r = term.getBoundingClientRect()
+      meaning.style.left = `${Math.min(r.left, innerWidth - meaning.offsetWidth - 8)}px`
+      meaning.style.top = `${r.bottom + 6}px`
+    }
+    meaning.addEventListener('toggle', (e) => {
+      if ((e as ToggleEvent).newState === 'open') place()
+      else pinned = false
+    })
+    term.addEventListener('pointerenter', (e) => {
+      hovering = e.pointerType === 'mouse'
+      if (hovering && !open()) meaning.showPopover()
+    })
+    term.addEventListener('pointerleave', (e) => {
+      hovering = false
+      if (e.pointerType === 'mouse' && !pinned && open()) meaning.hidePopover()
+    })
+    term.addEventListener('click', (e) => {
+      if (hovering && open() && !pinned) {
+        e.preventDefault()
+        pinned = true
+      }
+    })
+    term.addEventListener('focus', () => {
+      if (term.matches(':focus-visible') && !open()) meaning.showPopover()
+    })
+    addEventListener('scroll', () => open() && meaning.hidePopover(), { passive: true })
+  }
+
+  document.querySelector('.toggle')?.addEventListener('click', () => {
+    const root = document.documentElement
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark'
+    root.dataset.theme = next
+    localStorage.setItem('theme', next)
+  })
+</script>
