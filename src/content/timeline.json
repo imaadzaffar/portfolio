@@ -1,5 +1,6 @@
 [
   {"id": "aloft", "kind": "work", "start": "2026-06", "end": "present", "role": "Founding engineer #2", "org": "Aloft", "url": "https://aloft.so", "note": "AI teammates for property management.", "current": true},
+  {"id": "quit-bigtech", "kind": "life", "start": "2026-05", "text": "Quit my big tech SWE job", "note": "Handed in my notice, decided to go all in on startup life"},
   {"id": "marriage", "kind": "life", "start": "2025-12", "text": "Married my best friend"},
   {"id": "redwood", "kind": "work", "start": "2025-summer", "role": "After hours batch #0", "org": "Redwood Founders", "note": "8 week startup accelerator"},
   {"id": "uncooked", "kind": "work", "start": "2025-06", "end": "2025-12", "role": "Co-founder", "org": "uncooked", "note": "Trying to solve the job market crisis for young people"},
