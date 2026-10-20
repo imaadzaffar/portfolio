@@ -1,6 +1,7 @@
 ---
 import { getCollection, getEntry, render } from 'astro:content'
-import { Picture } from 'astro:assets'
+import { Image, Picture } from 'astro:assets'
+import avatar from '../assets/avatar.jpg'
 import Base from '../layouts/Base.astro'
 import Todo from '../components/Todo.astro'
 import WorldMap from '../components/WorldMap.astro'
@@ -50,6 +51,7 @@ const yearOnly = (t: { start: string | null; end?: string }) =>
   jsonLd={jsonLd}
 >
   <header class="top">
+    <Image class="avatar" src={avatar} width={40} height={40} densities={[1, 2]} loading="eager" alt="" aria-hidden="true" />
     <h1 class="name">Imaad Zaffar</h1>
     <p class="updated">Last updated <time datetime={now.data.updated.toISOString().slice(0, 10)}>{short}</time></p>
     <button class="toggle" type="button" aria-label="Toggle dark mode">◐</button>
