@@ -40,7 +40,7 @@ const timeline = defineCollection({
 
 const books = defineCollection({
   loader: file('./src/content/books.json'),
-  schema: z.object({ title: z.string(), author: z.string(), status: z.enum(['listening', 'reading', 'read']) }),
+  schema: z.object({ title: z.string(), url: z.string().url(), status: z.enum(['listening', 'reading', 'read']) }),
 })
 
 const projects = defineCollection({
