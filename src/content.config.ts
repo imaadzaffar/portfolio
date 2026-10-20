@@ -24,7 +24,6 @@ const timeline = defineCollection({
       url: z.string().url().optional(),
       note: z.string().optional(),
       current: z.boolean().default(false),
-      aside: z.string().optional(),
       todo,
     }),
     z.object({

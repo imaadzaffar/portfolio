@@ -89,7 +89,6 @@ const yearOnly = (t: { start: string | null; end?: string }) =>
                 {t.kind === 'life' && t.country && <Flag code={t.country} />}
                 {t.kind === 'work' && t.current && <span class="sr-only">(now)</span>}
                 {(t.note || t.todo) && <small><Todo value={t.note ?? null} todo={t.todo} /></small>}
-                {t.kind === 'work' && t.aside && <span class="hn" aria-hidden="true">{t.aside}</span>}
               </div>
             </li>
           </>
