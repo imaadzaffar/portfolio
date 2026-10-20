@@ -2,15 +2,15 @@
   {"id": "aloft", "kind": "work", "start": "2026-06", "end": "present", "role": "Founding engineer #2", "org": "Aloft", "url": "https://aloft.so", "note": "AI teammates for property management.", "current": true, "aside": "employee #2 ↗"},
   {"id": "marriage", "kind": "life", "start": "2025-12", "text": "Married my best friend"},
   {"id": "redwood", "kind": "work", "start": "2025-summer", "role": null, "org": "Redwood Founders", "note": "8 week startup accelerator"},
-  {"id": "uncooked", "kind": "work", "start": "2025", "role": "Co-founder", "org": "uncooked", "note": "trying to solve the job market crisis for young people", "todo": "add month"},
+  {"id": "uncooked", "kind": "work", "start": "2025-06", "end": "2025-12", "role": "Co-founder", "org": "uncooked", "note": "trying to solve the job market crisis for young people"},
   {"id": "bloomberg", "kind": "work", "start": "2024-10", "end": "2026-05", "role": "Software engineer", "org": "Bloomberg"},
   {"id": "japan", "kind": "life", "start": "2024-summer", "text": "6 weeks teaching in", "place": "Japan", "country": "JP", "note": "where I fell in love with teaching and Japan"},
-  {"id": "sky", "kind": "work", "start": "2023", "role": "SWE intern", "org": "Sky", "note": "first experience in big corp, free ice cream", "todo": "add month"},
+  {"id": "sky", "kind": "work", "start": "2023-summer", "role": "SWE intern", "org": "Sky", "note": "first experience in big corp, free ice cream"},
   {"id": "harvard", "kind": "work", "start": "2022-summer", "role": "ML research intern", "org": "Harvard Medical School", "note": "taste of academia and research, lived in an MIT frat house, ΝΔ (Nu Delta)"},
-  {"id": "feast", "kind": "work", "start": "2021-12", "role": "Co-founder", "org": "Feast", "note": "marketplace for homecooks, pivoted to social media for foodies"},
-  {"id": "ucl", "kind": "work", "start": "2021", "end": "2024", "role": "BSc Computer Science", "org": "UCL", "note": "First class.", "todo": "add start and end months"},
-  {"id": "london", "kind": "life", "start": "2021", "text": "moved to", "place": "London", "country": "GB", "todo": "add month"},
-  {"id": "birmingham", "kind": "life", "start": "2016", "text": "moved back to", "place": "Birmingham", "country": "GB", "todo": "add month"},
-  {"id": "doha", "kind": "life", "start": "2012", "text": "moved to", "place": "Doha", "country": "QA", "todo": "add month"},
-  {"id": "coventry", "kind": "life", "start": "2003", "text": "spawned in", "place": "Coventry", "country": "GB", "todo": "add month"}
+  {"id": "feast", "kind": "work", "start": "2021-12", "end": "2023-01", "role": "Co-founder", "org": "Feast", "note": "marketplace for homecooks, pivoted to social media for foodies"},
+  {"id": "ucl", "kind": "work", "start": "2021-09", "end": "2024-06", "role": "BSc Computer Science", "org": "UCL", "note": "First class."},
+  {"id": "london", "kind": "life", "start": "2021", "text": "moved to", "place": "London", "country": "GB"},
+  {"id": "birmingham", "kind": "life", "start": "2016", "text": "moved back to", "place": "Birmingham", "country": "GB"},
+  {"id": "doha", "kind": "life", "start": "2012", "text": "moved to", "place": "Doha", "country": "QA"},
+  {"id": "coventry", "kind": "life", "start": "2003", "text": "spawned in", "place": "Coventry", "country": "GB"}
 ]
