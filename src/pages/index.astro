@@ -100,7 +100,9 @@ const yearOnly = (t: { start: string | null; end?: string }) =>
         if ('IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-preference)').matches) {
           document.documentElement.classList.add('tl-anim')
           const io = new IntersectionObserver((es) => es.forEach((e) => {
-            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) }
+            // Draw on entry; undraw only when it leaves past the bottom (scrolling back up), so it replays.
+            if (e.isIntersecting) e.target.classList.add('in')
+            else if (e.rootBounds && e.boundingClientRect.top >= e.rootBounds.bottom) e.target.classList.remove('in')
           }), { rootMargin: '0px 0px -12% 0px' })
           document.querySelectorAll('.tl > li').forEach((li) => io.observe(li))
         }

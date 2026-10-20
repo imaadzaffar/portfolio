@@ -130,10 +130,11 @@ a:focus-visible, .term:focus-visible { outline: 1px solid var(--accent); outline
 .life .when, .life b { color: var(--life); }
 .card small { display: block; color: var(--muted); font-family: var(--serif); font-size: 15.5px; line-height: 1.45; }
 @media (prefers-reduced-motion: no-preference) {
-  .tl-anim .tl .it::before { opacity: 0; transform: scale(0.4); transition: opacity 0.35s ease-out, transform 0.35s ease-out; }
-  .tl-anim .tl > li::after { transform: scaleY(0); transition: transform 0.5s ease-out 0.15s; }
-  .tl-anim .tl .it.in::before { opacity: 1; transform: none; }
-  .tl-anim .tl > li.in::after { transform: none; }
+  /* out: line retracts, then the dot fades; in: dot, then the line draws down */
+  .tl-anim .tl .it::before { opacity: 0; transform: scale(0.4); transition: opacity 0.25s ease-in 0.1s, transform 0.25s ease-in 0.1s; }
+  .tl-anim .tl > li::after { transform: scaleY(0); transition: transform 0.3s ease-in; }
+  .tl-anim .tl .it.in::before { opacity: 1; transform: none; transition: opacity 0.35s ease-out, transform 0.35s ease-out; }
+  .tl-anim .tl > li.in::after { transform: none; transition: transform 0.5s ease-out 0.15s; }
 }
 
 .list { margin: 0 0 0.9rem; padding: 0; list-style: none; }
