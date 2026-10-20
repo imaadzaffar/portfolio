@@ -139,7 +139,7 @@ a:focus-visible, .term:focus-visible { outline: 1px solid var(--accent); outline
 
 .list { margin: 0 0 0.9rem; padding: 0; list-style: none; }
 .list li { padding: 0.1rem 0; }
-.books .author { color: var(--muted); }
+.book-icon { margin-right: 0.45em; color: var(--muted); }
 
 #now { position: relative; }
 .map { margin: 0.75rem 0 0; }

@@ -132,7 +132,19 @@ const yearOnly = (t: { start: string | null; end?: string }) =>
     <section style="--i:5">
       <h2>Bookmarks</h2>
       <ul class="list books">
-        {books.map((b) => <li>{b.title} <span class="author">{b.author}</span><em class="status">{b.status}</em></li>)}
+        {books.map((b) => (
+          <li>
+            <svg class="logo book-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              {b.status === 'listening' ? (
+                <path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3" />
+              ) : (
+                <path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
+              )}
+            </svg>
+            <span class="sr-only">{b.status[0].toUpperCase() + b.status.slice(1)}:</span>
+            <a href={b.url}>{b.title}</a>
+          </li>
+        ))}
       </ul>
     </section>
 
