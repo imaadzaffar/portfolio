@@ -8,7 +8,7 @@
   {"id": "sky", "kind": "work", "start": "2023-summer", "role": "SWE intern", "org": "Sky", "note": "first experience in big corp, free ice cream"},
   {"id": "harvard", "kind": "work", "start": "2022-summer", "role": "ML research intern", "org": "Harvard Medical School", "note": "taste of academia and research, lived in an MIT frat house, ΝΔ (Nu Delta)"},
   {"id": "feast", "kind": "work", "start": "2021-12", "end": "2023-01", "role": "Co-founder", "org": "Feast", "note": "marketplace for homecooks, pivoted to social media for foodies"},
-  {"id": "ucl", "kind": "work", "start": "2021", "end": "2024", "role": "BSc Computer Science", "org": "UCL", "note": "First class.", "todo": "add start and end months"},
+  {"id": "ucl", "kind": "work", "start": "2021-09", "end": "2024-06", "role": "BSc Computer Science", "org": "UCL", "note": "First class."},
   {"id": "london", "kind": "life", "start": "2021", "text": "moved to", "place": "London", "country": "GB"},
   {"id": "birmingham", "kind": "life", "start": "2016", "text": "moved back to", "place": "Birmingham", "country": "GB"},
   {"id": "doha", "kind": "life", "start": "2012", "text": "moved to", "place": "Doha", "country": "QA"},
