@@ -12,6 +12,7 @@
   --mark-ink: #5a5c62;
   --pencil: #5d6672;
   --life: #9a4f1f;
+  --career: #1e3a5f;
   color-scheme: light;
 }
 :root[data-theme='dark'] {
@@ -24,6 +25,7 @@
   --mark-ink: #9a9da4;
   --pencil: #8e97a4;
   --life: #e09a63;
+  --career: #8db4e2;
   color-scheme: dark;
 }
 
@@ -68,19 +70,14 @@ a {
 a:hover { color: var(--accent); text-decoration-color: var(--accent); }
 mark.ph { background: var(--mark); color: var(--mark-ink); padding: 0 0.25em; border-radius: 3px; font-size: 0.92em; }
 
-.updated, .yr, figcaption, footer { font-family: var(--mono); font-size: 12.5px; }
+.updated, figcaption, footer { font-family: var(--mono); font-size: 12.5px; }
 
 .ledger { list-style: none; margin: 0; padding: 0; }
-.ledger li { position: relative; display: grid; grid-template-columns: 5.5rem 1fr; gap: 0.75rem; padding: 0.5rem 0; border-top: 1px solid var(--line); }
-.ledger.plain li { grid-template-columns: 1fr; }
+.ledger li { padding: 0.5rem 0; border-top: 1px solid var(--line); }
 .ledger li:last-child { border-bottom: 1px solid var(--line); }
-.yr { color: var(--muted); font-variant-numeric: tabular-nums; }
-.yr .end { display: block; }
 .role b { font-weight: 500; }
 .role small { display: block; color: var(--muted); font-family: var(--serif); font-size: 15.5px; line-height: 1.5; }
 .status, .repo { margin-left: 0.5rem; font-family: var(--mono); font-size: 12px; font-style: normal; color: var(--muted); }
-.life .yr, .life b { color: var(--life); }
-.life b::before { content: ''; display: inline-block; width: 6px; height: 6px; margin-right: 0.45rem; vertical-align: 0.1em; border: 1.5px solid currentColor; border-radius: 50%; }
 .flag { display: inline-block; width: 1.05em; height: 0.7em; margin-left: 0.15rem; vertical-align: -0.05em; border-radius: 1px; overflow: hidden; box-shadow: 0 0 0 1px var(--line); }
 .flag svg { display: block; width: 100%; height: 100%; }
 .quote { margin: 0 0 1.1rem; }
@@ -101,10 +98,43 @@ a:focus-visible, .term:focus-visible { outline: 1px solid var(--accent); outline
   box-shadow: 0 2px 8px color-mix(in srgb, var(--ink) 8%, transparent);
 }
 .meaning [lang='ar'] { font-family: system-ui, sans-serif; font-size: 13px; }
-.dot {
-  display: inline-block; width: 7px; height: 7px; margin-left: 0.5rem; vertical-align: middle;
-  border-radius: 50%; background: var(--accent);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+/* Timeline: rail on the left, a year chip at each year change, a card per item with a dot and a tick */
+.tl { --rail: 6px; list-style: none; margin: 0; padding: 0; }
+.tl > li { position: relative; }
+.tl > li:not(:last-child)::after {
+  content: ''; position: absolute; left: var(--rail); top: var(--mid, 0.75rem); height: 100%; width: 1px; margin-left: -0.5px;
+  background: var(--line); transform-origin: top;
+}
+.tl .year { --mid: 0.65rem; padding: 0 0 0.8rem; }
+.tl .year:not(:first-child) { --mid: 0.95rem; padding-top: 0.3rem; }
+.tl .year span {
+  position: relative; z-index: 1; display: inline-block; padding: 0.25rem 0.45rem;
+  font-family: var(--mono); font-size: 11px; line-height: 1; color: var(--muted);
+  background: var(--bg); border: 1px solid var(--line); border-radius: 99px;
+}
+.tl .it { --mid: calc(1px + 0.6rem + 11.5px); padding: 0 0 0.7rem 1.75rem; }
+.tl .dated { --mid: calc(1px + 0.6rem + 9.5px); }
+.tl .it::before {
+  content: ''; position: absolute; z-index: 1; left: var(--rail); top: var(--mid);
+  width: 11px; height: 11px; margin: -5.5px 0 0 -5.5px; border-radius: 50%; background: var(--career);
+}
+.tl .life::before { background: var(--life); }
+.tl .current::before { background: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent); }
+.card {
+  position: relative; padding: 0.6rem 0.9rem 0.65rem; border: 1px solid var(--line); border-radius: 11px;
+  background: color-mix(in srgb, var(--bg) 70%, var(--mark));
+}
+.card::before { content: ''; position: absolute; left: calc(12px - 1.75rem); width: calc(1.75rem - 12px); top: calc(var(--mid) - 1.5px); height: 1px; background: var(--line); }
+.card .when { display: block; font-family: var(--mono); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.card b { font-weight: 500; color: var(--career); }
+.life .when, .life b { color: var(--life); }
+.card small { display: block; color: var(--muted); font-family: var(--serif); font-size: 15.5px; line-height: 1.45; }
+@media (prefers-reduced-motion: no-preference) {
+  /* out: line retracts, then the dot fades; in: dot, then the line draws down */
+  .tl-anim .tl .it::before { opacity: 0; transform: scale(0.4); transition: opacity 0.25s ease-in 0.1s, transform 0.25s ease-in 0.1s; }
+  .tl-anim .tl > li::after { transform: scaleY(0); transition: transform 0.3s ease-in; }
+  .tl-anim .tl .it.in::before { opacity: 1; transform: none; transition: opacity 0.35s ease-out, transform 0.35s ease-out; }
+  .tl-anim .tl > li.in::after { transform: none; transition: transform 0.5s ease-out 0.15s; }
 }
 
 .list { margin: 0 0 0.9rem; padding: 0; list-style: none; }

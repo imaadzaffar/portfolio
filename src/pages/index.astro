@@ -38,6 +38,10 @@ const jsonLd = {
   alumniOf: { '@type': 'CollegeOrUniversity', name: 'University College London' },
   sameAs: Object.values(links).map((l) => l.url),
 }
+// Year chips sit on the rail, so a card whose dates are all year-only shows no date line.
+const yearOf = (d?: string | null) => d?.split('-')[0] ?? '20??'
+const yearOnly = (t: { start: string | null; end?: string }) =>
+  !!t.start && /^\d{4}$/.test(t.start) && (!t.end || /^\d{4}$/.test(t.end))
 ---
 
 <Base
@@ -65,32 +69,48 @@ const jsonLd = {
         <p>You can’t connect the dots looking forward; you can only connect them looking backwards. So you have to trust that the dots will somehow connect in your future.</p>
         <cite>- Steve Jobs</cite>
       </blockquote>
-      <ol class="ledger">
-        {timeline.map(({ data: t }) => (
-          <li class:list={[t.kind]}>
-            <span class="yr">
-              {t.start ? formatDate(t.start) : <mark class="ph">20??</mark>}
-              {t.end && <span class="end">– {formatDate(t.end)}</span>}
-            </span>
-            <span class="role">
-              {t.kind === 'life' ? (
-                <b>{t.text}{t.place && ` ${t.place}`}</b>
-              ) : (
-                <b>{t.role && `${t.role}, `}{t.url ? <a href={t.url}>{t.org}</a> : t.org}</b>
-              )}
-              {t.kind === 'life' && t.country && <Flag code={t.country} />}
-              {t.kind === 'work' && t.current && <span class="dot" role="img" aria-label="now" />}
-              {(t.note || t.todo) && <small><Todo value={t.note ?? null} todo={t.todo} /></small>}
-              {t.kind === 'work' && t.aside && <span class="hn" aria-hidden="true">{t.aside}</span>}
-            </span>
-          </li>
+      <ol class="tl">
+        {timeline.map(({ data: t }, i) => (
+          <>
+            {yearOf(t.start) !== yearOf(timeline[i - 1]?.data.start) && <li class="year"><span>{yearOf(t.start)}</span></li>}
+            <li class:list={['it', t.kind, t.kind === 'work' && t.current && 'current', !yearOnly(t) && 'dated']}>
+              <div class="card">
+                {!yearOnly(t) && (
+                  <span class="when">
+                    {t.start ? formatDate(t.start) : <mark class="ph">20??</mark>}
+                    {t.end && ` – ${formatDate(t.end)}`}
+                  </span>
+                )}
+                {t.kind === 'life' ? (
+                  <b>{t.text}{t.place && ` ${t.place}`}</b>
+                ) : (
+                  <b>{t.role && `${t.role}, `}{t.url ? <a href={t.url}>{t.org}</a> : t.org}</b>
+                )}
+                {t.kind === 'life' && t.country && <Flag code={t.country} />}
+                {t.kind === 'work' && t.current && <span class="sr-only">(now)</span>}
+                {(t.note || t.todo) && <small><Todo value={t.note ?? null} todo={t.todo} /></small>}
+              </div>
+            </li>
+          </>
         ))}
       </ol>
+      <script is:inline>
+        // Dots and connectors draw in as each row scrolls into view. Without JS, IO or motion, they're just drawn.
+        if ('IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+          document.documentElement.classList.add('tl-anim')
+          const io = new IntersectionObserver((es) => es.forEach((e) => {
+            // Draw on entry; undraw only when it leaves past the bottom (scrolling back up), so it replays.
+            if (e.isIntersecting) e.target.classList.add('in')
+            else if (e.rootBounds && e.boundingClientRect.top >= e.rootBounds.bottom) e.target.classList.remove('in')
+          }), { rootMargin: '0px 0px -12% 0px' })
+          document.querySelectorAll('.tl > li').forEach((li) => io.observe(li))
+        }
+      </script>
     </section>
 
     <section id="projects" style="--i:3">
       <h2>Projects</h2>
-      <ul class="ledger plain">
+      <ul class="ledger">
         {projects.map(({ data: p }) => (
           <li>
             <span class="role">
