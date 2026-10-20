@@ -65,9 +65,9 @@ const jsonLd = {
         <p>You can’t connect the dots looking forward; you can only connect them looking backwards. So you have to trust that the dots will somehow connect in your future.</p>
         <cite>- Steve Jobs</cite>
       </blockquote>
-      <ol class="ledger">
+      <ol class="ledger tl">
         {timeline.map(({ data: t }) => (
-          <li class:list={[t.kind]}>
+          <li class:list={[t.kind, t.kind === 'work' && t.current && 'current']}>
             <span class="yr">
               {t.start ? formatDate(t.start) : <mark class="ph">20??</mark>}
               {t.end && <span class="end">– {formatDate(t.end)}</span>}
@@ -79,13 +79,23 @@ const jsonLd = {
                 <b>{t.role && `${t.role}, `}{t.url ? <a href={t.url}>{t.org}</a> : t.org}</b>
               )}
               {t.kind === 'life' && t.country && <Flag code={t.country} />}
-              {t.kind === 'work' && t.current && <span class="dot" role="img" aria-label="now" />}
+              {t.kind === 'work' && t.current && <span class="sr-only">(now)</span>}
               {(t.note || t.todo) && <small><Todo value={t.note ?? null} todo={t.todo} /></small>}
               {t.kind === 'work' && t.aside && <span class="hn" aria-hidden="true">{t.aside}</span>}
             </span>
           </li>
         ))}
       </ol>
+      <script is:inline>
+        // Dots and connectors draw in as each row scrolls into view. Without JS, IO or motion, they're just drawn.
+        if ('IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+          document.documentElement.classList.add('tl-anim')
+          const io = new IntersectionObserver((es) => es.forEach((e) => {
+            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) }
+          }), { rootMargin: '0px 0px -12% 0px' })
+          document.querySelectorAll('.tl li').forEach((li) => io.observe(li))
+        }
+      </script>
     </section>
 
     <section id="projects" style="--i:3">

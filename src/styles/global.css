@@ -80,7 +80,6 @@ mark.ph { background: var(--mark); color: var(--mark-ink); padding: 0 0.25em; bo
 .role small { display: block; color: var(--muted); font-family: var(--serif); font-size: 15.5px; line-height: 1.5; }
 .status, .repo { margin-left: 0.5rem; font-family: var(--mono); font-size: 12px; font-style: normal; color: var(--muted); }
 .life .yr, .life b { color: var(--life); }
-.life b::before { content: ''; display: inline-block; width: 6px; height: 6px; margin-right: 0.45rem; vertical-align: 0.1em; border: 1.5px solid currentColor; border-radius: 50%; }
 .flag { display: inline-block; width: 1.05em; height: 0.7em; margin-left: 0.15rem; vertical-align: -0.05em; border-radius: 1px; overflow: hidden; box-shadow: 0 0 0 1px var(--line); }
 .flag svg { display: block; width: 100%; height: 100%; }
 .quote { margin: 0 0 1.1rem; }
@@ -101,10 +100,24 @@ a:focus-visible, .term:focus-visible { outline: 1px solid var(--accent); outline
   box-shadow: 0 2px 8px color-mix(in srgb, var(--ink) 8%, transparent);
 }
 .meaning [lang='ar'] { font-family: system-ui, sans-serif; font-size: 13px; }
-.dot {
-  display: inline-block; width: 7px; height: 7px; margin-left: 0.5rem; vertical-align: middle;
-  border-radius: 50%; background: var(--accent);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+/* Timeline rail: a dot per row in the gutter, a line down to the next dot */
+.tl li { --rail: calc(5.5rem + 0.875rem); --mid: calc(0.5rem + 0.775em); column-gap: 1.75rem; }
+.tl li::before, .tl li:not(:last-child)::after { content: ''; position: absolute; left: var(--rail); }
+.tl li::before {
+  z-index: 1; top: var(--mid); width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px;
+  border-radius: 50%; background: var(--muted);
+}
+.tl li:not(:last-child)::after {
+  top: var(--mid); height: calc(100% + 1px); width: 1px; margin-left: -0.5px;
+  background: var(--line); transform-origin: top;
+}
+.tl .life::before { background: var(--bg); box-shadow: inset 0 0 0 1.5px var(--life); }
+.tl .current::before { background: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent); }
+@media (prefers-reduced-motion: no-preference) {
+  .tl-anim .tl li::before { opacity: 0; transform: scale(0.4); transition: opacity 0.35s ease-out, transform 0.35s ease-out; }
+  .tl-anim .tl li::after { transform: scaleY(0); transition: transform 0.5s ease-out 0.15s; }
+  .tl-anim .tl li.in::before { opacity: 1; transform: none; }
+  .tl-anim .tl li.in::after { transform: none; }
 }
 
 .list { margin: 0 0 0.9rem; padding: 0; list-style: none; }
