@@ -45,7 +45,8 @@ body {
 .skip { position: absolute; left: -999px; }
 .skip:focus { left: 1rem; top: 1rem; background: var(--bg); padding: 0.25rem 0.5rem; }
 
-.top { position: relative; margin-bottom: 3.5rem; }
+.top { position: relative; display: grid; grid-template-columns: auto 1fr; column-gap: 0.75rem; margin-bottom: 3.5rem; }
+.avatar { grid-row: span 2; display: block; width: 40px; height: 40px; border-radius: 50%; box-shadow: 0 0 0 1px var(--line); }
 .name { font-size: 1em; font-weight: 600; margin: 0; }
 .updated { margin: 0; color: var(--muted); }
 .toggle {
